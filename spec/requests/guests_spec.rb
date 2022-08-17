@@ -1,7 +1,115 @@
 require 'rails_helper'
 
 RSpec.describe "Guests", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+  let!(:logging) { create(:logging) }
+  let!(:team) { create(:team) }
+  let!(:guests) { create_list(:guest, 10, logging_id: logging.id, team_id: team.id) }
+  let(:logging_id) { logging.id }
+  let(:team_id) { team.id }
+  let(:guest_id) { guests.first.id }
+
+  describe 'GET /guests' do
+    before { get '/guests' }
+
+    it 'returns guests' do
+      expect(json).not_to be_empty
+      expect(json.size).to eq(10)
+    end
+
+    it 'returns status code 200' do
+      expect(response).to have_http_status(200)
+    end
+  end
+
+  describe 'GET /guest/:id' do
+    before { get "/guests/#{guest_id}" }
+
+    context 'when the record exists' do
+      it 'returns the guest' do
+        expect(json).not_to be_empty
+        expect(json['id']).to eq(guest_id)
+      end
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'when the record does not exist' do
+      let(:guest_id) { 100 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Todo/)
+      end
+    end
+  end
+
+  describe 'POST /guests' do
+    let(:valid_attributes) { { first_name: 'Miwha', last_name: 'Geschwind', rsvp: 'yes', type: 'coed', email: 'name@website.com', diet: 'words are here', meals: "test", payment_method: 1, arrival_date: 'friday',age: 0, plus_ones: 0, comments: "words here" } }
+
+    context 'when the request is valid' do
+      before { post '/guests', params: valid_attributes }
+
+      it 'creates a guest' do
+        expect(json['name']).to eq('Miwha')
+      end
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+
+    context 'when the request is invalid' do
+      before { post '/guest', params: { first_name: 'Foobar' } }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns a validation failure message' do
+        expect(response.body)
+          .to match(/Validation failed: Created by can't be blank/)
+      end
+    end
+  end
+
+  describe 'PUT /guests/:id' do
+    let(:valid_attributes) { { first_name: 'Hummingbird' } }
+
+    context 'when the record exists' do
+      before { put "/guests/#{guest_id}", params: valid_attributes }
+
+      it 'updates the record' do
+        expect(response.body).to be_empty
+      end
+
+      it 'returns status code 204' do
+        expect(response).to have_http_status(204)
+      end
+    end
+
+    context 'when a guest doesnt exist' do
+      let(:guest_id) { 0 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Guest/)
+      end
+    end
+  end
+
+  describe 'DELETE /guest/:id' do
+    before { delete "/guest/#{guest_id}" }
+
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end
   end
 end
