@@ -11,7 +11,7 @@ FactoryBot.define do
     age { 0 }
     plus_ones { Faker::Number.between(from: 0, to: 1) }
     comments { Faker::Lorem.sentence }
-    logging { nil }
+    lodging { nil }
     team { nil }
   end
 end

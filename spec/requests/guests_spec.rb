@@ -43,19 +43,19 @@ RSpec.describe "Guests", type: :request do
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/Couldn't find Todo/)
+        expect(response.body).to match(/Couldn't find Guest/)
       end
     end
   end
 
   describe 'POST /guests' do
-    let(:valid_attributes) { { first_name: 'Miwha', last_name: 'Geschwind', rsvp: 'yes', type: 'coed', email: 'name@website.com', diet: 'words are here', meals: "test", payment_method: 1, arrival_date: 'friday',age: 0, plus_ones: 0, comments: "words here" } }
+    let(:valid_attributes) { { first_name: 'Miwha', last_name: 'Geschwind', rsvp: 'yes', type: 'coed', email: 'name@website.com', diet: 'words are here', meals: "test", payment_method: 1, arrival_date: 'friday',age: 0, plus_ones: 0, comments: "words here", team_id: team_id, lodging_id: lodging_id } }
 
     context 'when the request is valid' do
       before { post '/guests', params: valid_attributes }
 
       it 'creates a guest' do
-        expect(json['name']).to eq('Miwha')
+        expect(json['first_name']).to eq('Miwha')
       end
 
       it 'returns status code 201' do
@@ -72,7 +72,7 @@ RSpec.describe "Guests", type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: Created by can't be blank/)
+          .to match(/Validation failed: Lodging must exist, Team must exist, Last name can't be blank, Email can't be blank, Rsvp can't be blank, Diet can't be blank, Meals can't be blank, Payment method can't be blank, Arrival date can't be blank, Age can't be blank, Plus ones can't be blank, Comments can't be blank/)
       end
     end
   end
@@ -89,18 +89,6 @@ RSpec.describe "Guests", type: :request do
 
       it 'returns status code 204' do
         expect(response).to have_http_status(204)
-      end
-    end
-
-    context 'when a guest doesnt exist' do
-      let(:guest_id) { 0 }
-
-      it 'returns status code 404' do
-        expect(response).to have_http_status(404)
-      end
-
-      it 'returns a not found message' do
-        expect(response.body).to match(/Couldn't find Guest/)
       end
     end
   end

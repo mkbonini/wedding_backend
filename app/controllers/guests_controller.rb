@@ -7,7 +7,7 @@ class GuestsController < ApplicationController
     end
   
     def create
-      @guest = guest.create!(guest_params)
+      @guest = Guest.create!(guest_params)
       json_response(@guest, :created)
     end
   
@@ -28,7 +28,7 @@ class GuestsController < ApplicationController
     private
   
     def guest_params
-      params.permit(:first_name, :last_name, :rsvp, :email, :diet, :meals, :payment_method, :arrival_date, :age, :plus_ones, :comments)
+      params.permit(:first_name, :last_name, :rsvp, :email, :diet, :meals, :payment_method, :arrival_date, :age, :plus_ones, :comments, :team_id, :lodging_id)
     end
 
     def set_guest
