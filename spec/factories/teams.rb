@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :team do
-    name { "MyString" }
-    theme { "MyString" }
+    name { Faker::Superhero.name }
+    theme { Faker::Superhero.power }
   end
 end

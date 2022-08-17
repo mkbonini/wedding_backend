@@ -1,16 +1,16 @@
 FactoryBot.define do
   factory :guest do
-    first_name { "MyString" }
-    last_name { "MyString" }
-    email { "MyString" }
-    rsvp { 1 }
-    diet { "MyString" }
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name  }
+    email { Faker::Internet.email  }
+    rsvp { Faker::Number.between(from: 0, to: 1)  }
+    diet { Faker::Lorem.sentence }
     meals { "MyText" }
     payment_method { 1 }
-    arrival_date { "MyString" }
-    age { 1 }
-    plus_ones { 1 }
-    comments { "MyString" }
+    arrival_date { ["friday", "saturday"].sample }
+    age { 0 }
+    plus_ones { Faker::Number.between(from: 0, to: 1) }
+    comments { Faker::Lorem.sentence }
     logging { nil }
     team { nil }
   end
