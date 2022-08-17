@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_17_191710) do
+ActiveRecord::Schema.define(version: 2022_08_17_214427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,17 +27,17 @@ ActiveRecord::Schema.define(version: 2022_08_17_191710) do
     t.integer "age"
     t.integer "plus_ones"
     t.string "comments"
-    t.bigint "logging_id"
+    t.bigint "lodging_id"
     t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["logging_id"], name: "index_guests_on_logging_id"
+    t.index ["lodging_id"], name: "index_guests_on_lodging_id"
     t.index ["team_id"], name: "index_guests_on_team_id"
   end
 
-  create_table "loggings", force: :cascade do |t|
+  create_table "lodgings", force: :cascade do |t|
     t.string "name"
-    t.integer "type"
+    t.integer "lodging_type"
     t.integer "capacity"
     t.string "url"
     t.string "description"
@@ -52,6 +52,6 @@ ActiveRecord::Schema.define(version: 2022_08_17_191710) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "guests", "loggings"
+  add_foreign_key "guests", "lodgings"
   add_foreign_key "guests", "teams"
 end

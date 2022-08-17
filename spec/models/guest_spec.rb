@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Guest, type: :model do
-  it { should belong_to (:logging) }
+  it { should belong_to (:lodging) }
   it { should belong_to (:team) }
 
   it { should validate_presence_of(:first_name) }

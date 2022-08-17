@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "Guests", type: :request do
-  let!(:logging) { create(:logging) }
+  let!(:lodging) { create(:lodging) }
   let!(:team) { create(:team) }
-  let!(:guests) { create_list(:guest, 10, logging_id: logging.id, team_id: team.id) }
-  let(:logging_id) { logging.id }
+  let!(:guests) { create_list(:guest, 10, lodging_id: lodging.id, team_id: team.id) }
+  let(:lodging_id) { lodging.id }
   let(:team_id) { team.id }
   let(:guest_id) { guests.first.id }
 
@@ -64,7 +64,7 @@ RSpec.describe "Guests", type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/guest', params: { first_name: 'Foobar' } }
+      before { post '/guests', params: { first_name: 'Foobar' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -106,7 +106,7 @@ RSpec.describe "Guests", type: :request do
   end
 
   describe 'DELETE /guest/:id' do
-    before { delete "/guest/#{guest_id}" }
+    before { delete "/guests/#{guest_id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
