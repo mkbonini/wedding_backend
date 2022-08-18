@@ -3,7 +3,7 @@ class LodgingsController < ApplicationController
 
     def index
       @lodgings = Lodging.all
-      json_response(@lodgings)
+      lodging_response(@lodgings)
     end
   
     def create
@@ -12,7 +12,7 @@ class LodgingsController < ApplicationController
     end
   
     def show
-      json_response(@lodging)
+      lodging_response(@lodging)
     end
   
     def update
