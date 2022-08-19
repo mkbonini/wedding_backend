@@ -16,8 +16,10 @@ class GuestsController < ApplicationController
     end
   
     def update
-      @guest.update(guest_params)
+      updated_guest = @guest.update(guest_params)
       head :no_content
+
+      GuestMailer.with(guest: updated_guest).welcome_email.deliver_later
     end
   
     def destroy
