@@ -18,6 +18,8 @@ class GuestsController < ApplicationController
     def update
       @guest.update(guest_params)
       head :no_content
+
+      GuestMailer.with(guest: @guest).welcome_email.deliver_later
     end
   
     def destroy
