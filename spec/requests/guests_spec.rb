@@ -78,7 +78,7 @@ RSpec.describe "Guests", type: :request do
   end
 
   describe 'PUT /guests/:id' do
-    let(:valid_attributes) { { first_name: 'Hummingbird' } }
+    let(:valid_attributes) { { first_name: 'Hummingbird', email: 'mikemiwha@gmail.com' } }
 
     context 'when the record exists' do
       before { put "/guests/#{guest_id}", params: valid_attributes }
