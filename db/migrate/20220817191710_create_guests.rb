@@ -10,7 +10,7 @@ class CreateGuests < ActiveRecord::Migration[5.2]
       t.integer :payment_method
       t.string :arrival_date
       t.integer :party_count
-      t.integer :plus_ones
+      t.integer :plus_one_count
       t.string :comments
       t.references :logging, foreign_key: true
       t.references :team, foreign_key: true

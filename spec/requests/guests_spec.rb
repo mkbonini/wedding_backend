@@ -49,7 +49,7 @@ RSpec.describe "Guests", type: :request do
   end
 
   describe 'POST /guests' do
-    let(:valid_attributes) { { first_name: 'Miwha', last_name: 'Geschwind', rsvp: 'yes', type: 'coed', email: 'name@website.com', diet: 'words are here', meals: "test", payment_method: 1, arrival_date: 'friday',age: 0, plus_ones: 0, comments: "words here", team_id: team_id, lodging_id: lodging_id } }
+    let(:valid_attributes) { { first_name: 'Miwha', last_name: 'Geschwind', rsvp: 'yes', type: 'coed', email: 'name@website.com', diet: 'words are here', meals: "test", payment_method: 1, arrival_date: 'friday', party_count: 1, plus_one_count: 0, comments: "words here", team_id: team_id, lodging_id: lodging_id } }
 
     context 'when the request is valid' do
       before { post '/guests', params: valid_attributes }
@@ -72,7 +72,7 @@ RSpec.describe "Guests", type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: Lodging must exist, Team must exist, Last name can't be blank, Email can't be blank, Rsvp can't be blank, Diet can't be blank, Meals can't be blank, Payment method can't be blank, Arrival date can't be blank, Age can't be blank, Plus ones can't be blank, Comments can't be blank/)
+          .to match(/Validation failed: Lodging must exist, Team must exist, Last name can't be blank, Email can't be blank, Rsvp can't be blank, Diet can't be blank, Meals can't be blank, Payment method can't be blank, Arrival date can't be blank, Party count can't be blank, Plus one count can't be blank, Comments can't be blank/)
       end
     end
   end

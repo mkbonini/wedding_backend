@@ -9,7 +9,7 @@ FactoryBot.define do
     payment_method { 1 }
     arrival_date { ["friday", "saturday"].sample }
     party_count { Faker::Number.between(from: 1, to: 3)  }
-    plus_ones { Faker::Number.between(from: 0, to: 1) }
+    plus_one_count { Faker::Number.between(from: 0, to: 1) }
     comments { Faker::Lorem.sentence }
     lodging { nil }
     team { nil }

@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2022_10_20_205250) do
     t.integer "payment_method"
     t.string "arrival_date"
     t.integer "party_count"
-    t.integer "plus_ones"
+    t.integer "plus_one_count"
     t.string "comments"
     t.bigint "lodging_id"
     t.bigint "team_id"
