@@ -9,7 +9,7 @@ class CreateGuests < ActiveRecord::Migration[5.2]
       t.text :meals
       t.integer :payment_method
       t.string :arrival_date
-      t.integer :age
+      t.integer :party_count
       t.integer :plus_ones
       t.string :comments
       t.references :logging, foreign_key: true

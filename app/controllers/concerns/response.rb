@@ -6,5 +6,5 @@ module Response
     def lodging_response(object, status = :ok)
       render json: object, include: {:guests => { only: [:first_name, :last_name]}} , status: status
     end
-  end
+end
   

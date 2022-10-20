@@ -12,6 +12,6 @@ RSpec.describe Guest, type: :model do
   it { should validate_presence_of(:meals) }
   it { should validate_presence_of(:payment_method) }
   it { should validate_presence_of(:arrival_date) }
-  it { should validate_presence_of(:age) }
+  it { should validate_presence_of(:party_count) }
   it { should validate_presence_of(:plus_ones) }
 end

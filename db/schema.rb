@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_17_214427) do
+ActiveRecord::Schema.define(version: 2022_10_20_205250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2022_08_17_214427) do
     t.text "meals"
     t.integer "payment_method"
     t.string "arrival_date"
-    t.integer "age"
+    t.integer "party_count"
     t.integer "plus_ones"
     t.string "comments"
     t.bigint "lodging_id"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2022_08_17_214427) do
     t.datetime "updated_at", null: false
     t.index ["lodging_id"], name: "index_guests_on_lodging_id"
     t.index ["team_id"], name: "index_guests_on_team_id"
+  end
+
+  create_table "kids", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.bigint "guest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_kids_on_guest_id"
   end
 
   create_table "lodgings", force: :cascade do |t|
@@ -45,6 +54,14 @@ ActiveRecord::Schema.define(version: 2022_08_17_214427) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "plus_ones", force: :cascade do |t|
+    t.string "name"
+    t.bigint "guest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_plus_ones_on_guest_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "theme"
@@ -54,4 +71,6 @@ ActiveRecord::Schema.define(version: 2022_08_17_214427) do
 
   add_foreign_key "guests", "lodgings"
   add_foreign_key "guests", "teams"
+  add_foreign_key "kids", "guests"
+  add_foreign_key "plus_ones", "guests"
 end

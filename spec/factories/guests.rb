@@ -8,7 +8,7 @@ FactoryBot.define do
     meals { "MyText" }
     payment_method { 1 }
     arrival_date { ["friday", "saturday"].sample }
-    age { 0 }
+    party_count { Faker::Number.between(from: 1, to: 3)  }
     plus_ones { Faker::Number.between(from: 0, to: 1) }
     comments { Faker::Lorem.sentence }
     lodging { nil }
