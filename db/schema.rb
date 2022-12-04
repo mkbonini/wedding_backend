@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_20_205250) do
+ActiveRecord::Schema.define(version: 2022_10_28_180014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,11 @@ ActiveRecord::Schema.define(version: 2022_10_20_205250) do
     t.bigint "guest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "lodging_id"
+    t.bigint "team_id"
     t.index ["guest_id"], name: "index_kids_on_guest_id"
+    t.index ["lodging_id"], name: "index_kids_on_lodging_id"
+    t.index ["team_id"], name: "index_kids_on_team_id"
   end
 
   create_table "lodgings", force: :cascade do |t|
@@ -59,7 +63,11 @@ ActiveRecord::Schema.define(version: 2022_10_20_205250) do
     t.bigint "guest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "lodging_id"
+    t.bigint "team_id"
     t.index ["guest_id"], name: "index_plus_ones_on_guest_id"
+    t.index ["lodging_id"], name: "index_plus_ones_on_lodging_id"
+    t.index ["team_id"], name: "index_plus_ones_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -72,5 +80,9 @@ ActiveRecord::Schema.define(version: 2022_10_20_205250) do
   add_foreign_key "guests", "lodgings"
   add_foreign_key "guests", "teams"
   add_foreign_key "kids", "guests"
+  add_foreign_key "kids", "lodgings"
+  add_foreign_key "kids", "teams"
   add_foreign_key "plus_ones", "guests"
+  add_foreign_key "plus_ones", "lodgings"
+  add_foreign_key "plus_ones", "teams"
 end

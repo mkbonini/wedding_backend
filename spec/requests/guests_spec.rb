@@ -72,7 +72,7 @@ RSpec.describe "Guests", type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: Lodging must exist, Team must exist, Last name can't be blank, Email can't be blank, Rsvp can't be blank, Diet can't be blank, Meals can't be blank, Payment method can't be blank, Arrival date can't be blank, Party count can't be blank, Plus one count can't be blank, Comments can't be blank/)
+          .to match(/Validation failed: Lodging must exist, Team must exist, Last name can't be blank, Email can't be blank, Rsvp can't be blank, Payment method can't be blank, Arrival date can't be blank, Plus one count can't be blank/)
       end
     end
   end

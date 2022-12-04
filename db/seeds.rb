@@ -9,4 +9,18 @@ require 'factory_bot_rails'
 
 lodgings = FactoryBot.create_list(:lodging, 10)
 team = FactoryBot.create(:team)
-guests = FactoryBot.create_list(:guest, 10, lodging_id: lodgings.first.id, team_id: team.id) 
+guests = []
+50.times.with_index do |i|
+  guest = FactoryBot.create(:guest, lodging_id: lodgings.sample.id, team_id: team.id) 
+  if i % 2 == 0
+    kids = FactoryBot.create(:kid, lodging_id: lodgings.sample.id, team_id: team.id, guest_id: guest.id)
+    plus_ones = FactoryBot.create(:plus_one, lodging_id: lodgings.sample.id, team_id: team.id, guest_id: guest.id) 
+  end
+  guests << guest
+end
+# 10.times do
+#   kids = FactoryBot.create(:kid, lodging_id: lodgings.sample.id, team_id: team.id, guest_id: guests.sample.id) 
+# end
+# 20.times do
+#   plus_ones = FactoryBot.create(:plus_one, lodging_id: lodgings.sample.id, team_id: team.id, guest_id: guests.sample.id) 
+# end

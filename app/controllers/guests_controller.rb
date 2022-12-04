@@ -3,23 +3,31 @@ class GuestsController < ApplicationController
 
     def index
       @guests = Guest.all
-      json_response(@guests)
+      guest_response(@guests)
     end
   
     def create
       @guest = Guest.create!(guest_params)
-      json_response(@guest, :created)
+      guest_response(@guest, :created)
     end
   
     def show
-      json_response(@guest)
+      guest_response(@guest)
     end
   
     def update
+      if guest_params.include?('lodging_id')
+        @guest.kids.each do |kid|
+          kid.update(lodging_id: guest_params['lodging_id'])
+        end
+        @guest.plus_ones.each do |plus_one|
+          plus_one.update(lodging_id: guest_params['lodging_id'])
+        end
+      end
       @guest.update(guest_params)
       head :no_content
 
-      GuestMailer.with(guest: @guest).welcome_email.deliver_later
+      # GuestMailer.with(guest: @guest).welcome_email.deliver_later
     end
   
     def destroy

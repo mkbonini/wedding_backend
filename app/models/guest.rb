@@ -4,7 +4,7 @@ class Guest < ApplicationRecord
   has_many :kids
   has_many :plus_ones
 
-  validates_presence_of :first_name, :last_name, :email, :rsvp, :diet, :meals, :payment_method, :arrival_date, :party_count, :plus_one_count, :comments
+  validates_presence_of :first_name, :last_name, :email, :rsvp, :payment_method, :arrival_date, :plus_one_count
 
-  enum rsvp: { "no": 0, "yes": 1 }
+  enum rsvp: { "no": 0, "yes": 1, "pending": 2 }
 end
