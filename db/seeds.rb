@@ -6,8 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'factory_bot_rails'
-
-lodgings = FactoryBot.create_list(:lodging, 10)
+lodgings_list = JSON.parse(File.read(Rails.root.join('db/seed_data/lodgings.json')))
+lodgings_list.each do |lodging|
+  # binding.pry
+  Lodging.create!(lodging)
+end
+lodgings = Lodging.all
 team = FactoryBot.create(:team)
 guests = []
 50.times.with_index do |i|

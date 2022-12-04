@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(version: 2022_10_28_180014) do
     t.integer "capacity"
     t.string "url"
     t.string "description"
+    t.string "title"
+    t.string "image_url"
+    t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
