@@ -6,9 +6,6 @@ class CreateLoggings < ActiveRecord::Migration[5.2]
       t.integer :capacity
       t.string :url
       t.string :description
-      t.string :title
-      t.string :image_url
-      t.string :color
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_28_180014) do
+ActiveRecord::Schema.define(version: 2022_12_05_005115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,11 +54,11 @@ ActiveRecord::Schema.define(version: 2022_10_28_180014) do
     t.integer "capacity"
     t.string "url"
     t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "title"
     t.string "image_url"
     t.string "color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "plus_ones", force: :cascade do |t|
