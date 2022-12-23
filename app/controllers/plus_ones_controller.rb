@@ -1,0 +1,37 @@
+class PlusOnesController < ApplicationController
+  before_action :set_plus_one, only: [:show, :update, :destroy]
+
+  def index
+    @plus_ones = PlusOne.all
+    json_response(@plus_ones)
+  end
+
+  def create
+    @plus_one = PlusOne.create!(plus_one_params)
+    json_response(@plus_one, :created)
+  end
+
+  def show
+    json_response(@plus_one)
+  end
+
+  def update
+    @plus_one.update(plus_one_params)
+    head :no_content
+  end
+
+  def destroy
+    @plus_one.destroy
+    head :no_content
+  end
+
+  private
+
+  def plus_one_params
+    params.permit(:name, :age, :guest_id, :team_id, :lodging_id)
+  end
+
+  def set_plus_one
+      @plus_one = PlusOne.find(params[:id])
+  end
+end

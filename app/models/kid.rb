@@ -8,13 +8,13 @@ class Kid < ApplicationRecord
   private
   def increase_party_count
     guest = Guest.find(self.guest_id)
-    party_count = guest.party_count
-    guest.party_count = party_count + 1
-    save
+    party_count = guest.party_count + 1
+    guest.update_attributes(:party_count => party_count)
   end
 
   def decrese_party_count
     @guest = Guest.find(self.guest_id)
-    @guest.decrement!(party_count)
+    party_count = guest.party_count - 1
+    guest.update_attributes(:party_count => party_count)
   end
 end
