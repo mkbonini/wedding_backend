@@ -9,12 +9,14 @@ class PlusOne < ApplicationRecord
   def increase_party_count
     guest = Guest.find(self.guest_id)
     party_count = guest.party_count + 1
-    guest.update_attributes(:party_count => party_count)
+    bed_count = guest.bed_count + 1
+    guest.update_attributes(:party_count => party_count, :bed_count => bed_count)
   end
 
   def decrese_party_count
     guest = Guest.find(self.guest_id)
     party_count = guest.party_count - 1
-    guest.update_attributes(:party_count => party_count)
+    bed_count = guest.bed_count - 1
+    guest.update_attributes(:party_count => party_count, :bed_count => bed_count)
   end
 end

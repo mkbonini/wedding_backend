@@ -6,11 +6,13 @@ class Guest < ApplicationRecord
   after_initialize :set_defaults
   validates_presence_of :first_name, :last_name
 
-  enum rsvp: { "no": 0, "yes": 1, "pending": 2 }
+  enum rsvp:  {no: 0, yes: 1, pending: 2}
+  enum breakfast: {no: 0, yes: 1}, _prefix: :breakfast
 
   private
   def set_defaults
     self.plus_one_count ||= 0 
     self.party_count ||= 1
+    self.bed_count ||= 1
   end
 end

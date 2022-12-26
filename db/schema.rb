@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_05_005115) do
+ActiveRecord::Schema.define(version: 2022_12_26_214106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2022_12_05_005115) do
     t.string "email"
     t.integer "rsvp"
     t.string "diet"
-    t.text "meals"
     t.integer "payment_method"
     t.string "arrival_date"
     t.integer "party_count"
@@ -31,6 +30,8 @@ ActiveRecord::Schema.define(version: 2022_12_05_005115) do
     t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bed_count"
+    t.integer "breakfast"
     t.index ["lodging_id"], name: "index_guests_on_lodging_id"
     t.index ["team_id"], name: "index_guests_on_team_id"
   end
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2022_12_05_005115) do
     t.datetime "updated_at", null: false
     t.bigint "lodging_id"
     t.bigint "team_id"
+    t.integer "needs_bed"
     t.index ["guest_id"], name: "index_kids_on_guest_id"
     t.index ["lodging_id"], name: "index_kids_on_lodging_id"
     t.index ["team_id"], name: "index_kids_on_team_id"
