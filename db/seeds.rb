@@ -14,11 +14,12 @@ end
 lodgings = Lodging.all
 team = FactoryBot.create(:team)
 guests = []
-50.times.with_index do |i|
-  guest = FactoryBot.create(:guest, lodging_id: lodgings.sample.id, team_id: team.id) 
-  if i % 2 == 0
-    kids = FactoryBot.create(:kid, lodging_id: lodgings.sample.id, team_id: team.id, guest_id: guest.id)
-    plus_ones = FactoryBot.create(:plus_one, lodging_id: lodgings.sample.id, team_id: team.id, guest_id: guest.id) 
+20.times.with_index do |i|
+  lodging_id = lodgings.sample.id
+  guest = FactoryBot.create(:guest, lodging_id: lodging_id, team_id: team.id) 
+  if i % 3 == 0
+    kids = FactoryBot.create(:kid, lodging_id: lodging_id, team_id: team.id, guest_id: guest.id)
+    plus_ones = FactoryBot.create(:plus_one, lodging_id: lodging_id, team_id: team.id, guest_id: guest.id) 
   end
   guests << guest
 end

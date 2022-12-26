@@ -4,7 +4,7 @@ module Response
     end
 
     def lodging_response(object, status = :ok)
-      render json: object, include: {:guests => { only: [:first_name, :last_name, :kids]}, :kids => { only: [:name]}, :plus_ones => { only: [:name]}} , status: status
+      render json: object, methods: :occupants , status: status
     end
 
     def guest_response(object, status = :ok)
