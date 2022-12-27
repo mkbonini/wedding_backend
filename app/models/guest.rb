@@ -9,6 +9,9 @@ class Guest < ApplicationRecord
   enum rsvp:  {no: 0, yes: 1, pending: 2}
   enum breakfast: {no: 0, yes: 1}, _prefix: :breakfast
 
+  def full_name
+    [first_name, last_name].join(' ')
+  end
   private
   def set_defaults
     self.plus_one_count ||= 0 
