@@ -11,7 +11,7 @@ namespace :fly do
   #  - changes to the filesystem made here are DISCARDED
   #  - full access to secrets, databases
   #  - failures here prevent deployment
-  # task :release => 'db:drop'
+  # task :release => 'db:{drop,create,migrate}'
   # task :release => 'db:create'
   task :release => 'db:migrate'
 

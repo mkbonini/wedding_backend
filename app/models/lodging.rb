@@ -28,4 +28,9 @@ class Lodging < ApplicationRecord
         end
         name_list
     end
+
+    def spots_remaining
+        occupant_list = (self.guests + self.kids + self.plus_ones).flatten
+        capacity - occupant_list.length
+    end
 end

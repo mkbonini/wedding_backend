@@ -4,7 +4,7 @@ module Response
     end
 
     def lodging_response(object, status = :ok)
-      render json: object, methods: :occupants , status: status
+      render json: object, methods: [:occupants, :spots_remaining ], status: status
     end
 
     def guest_response(object, status = :ok)

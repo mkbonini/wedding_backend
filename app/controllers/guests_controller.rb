@@ -44,7 +44,12 @@ class GuestsController < ApplicationController
     private
   
     def guest_params
-      params.permit(:first_name, :last_name, :rsvp, :email, :diet, :breakfast, :payment_method, :arrival_date, :party_count, :bed_count, :plus_one_count, :comments, :team_id, :lodging_id)
+      model_attributes = [:first_name, :last_name, :rsvp, :email, :diet, :breakfast, :payment_method, :arrival_date, :party_count, :bed_count, :plus_one_count, :comments, :team_id, :lodging_id]
+      if params.key? '_json'
+        params.permit(_json: model_attributes)['_json'] 
+      else
+        params.permit(:first_name, :last_name, :rsvp, :email, :diet, :breakfast, :payment_method, :arrival_date, :party_count, :bed_count, :plus_one_count, :comments, :team_id, :lodging_id)
+      end
     end
 
     def set_guest
