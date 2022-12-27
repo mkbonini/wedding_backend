@@ -28,7 +28,7 @@ class LodgingsController < ApplicationController
     private
   
     def lodging_params
-      params.permit(:name, :lodging_type, :capacity, :url, :description)
+      params.permit(:name, :lodging_type, :capacity, :url, :description, :image_url)
     end
   
     def set_lodging
