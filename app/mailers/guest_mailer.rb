@@ -1,5 +1,5 @@
 class GuestMailer < ApplicationMailer
-    default from: 'notifications@example.com'
+    default from: 'mikemiwha@gmail.com'
 
     def welcome_email
       @guest = params[:guest]

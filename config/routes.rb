@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :plus_ones
   resources :guests 
   get '/guest_list', to: 'guest_list#index'
+  get '/guests/:id/email', to: 'guests#email'
 end

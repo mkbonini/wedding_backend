@@ -1,5 +1,5 @@
 class GuestsController < ApplicationController
-    before_action :set_guest, only: [:show, :update, :destroy]
+    before_action :set_guest, only: [:show, :update, :destroy, :email]
 
     def index
       @guests = Guest.all
@@ -40,7 +40,11 @@ class GuestsController < ApplicationController
       @guest.destroy
       head :no_content
     end
-  
+    
+    def email
+      GuestMailer.with(guest: @guest).welcome_email.deliver_later
+    end
+
     private
   
     def guest_params
