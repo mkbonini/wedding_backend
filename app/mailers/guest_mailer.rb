@@ -1,5 +1,5 @@
 class GuestMailer < ApplicationMailer
-    default from: 'mikemiwha@gmail.com'
+    default from: ENV['gmail_username']
 
     def welcome_email
       @guest = params[:guest]
