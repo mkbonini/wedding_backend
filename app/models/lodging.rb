@@ -5,7 +5,7 @@ class Lodging < ApplicationRecord
 
     validates_presence_of :name, :lodging_type, :capacity
 
-    enum lodging_type: { "male": 0, "female": 1, "coed": 2, "rv": 3, "appartment": 4 }
+    enum lodging_type: { "male": 0, "female": 1, "coed": 2, "rv": 3, "appartment": 4, "offsite": 5 }
 
     def occupants
         ordered_list = self.guests.flat_map do |guest|

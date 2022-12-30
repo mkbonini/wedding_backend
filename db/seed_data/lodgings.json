@@ -228,5 +228,15 @@
     "description": "",
     "image_url": "",
     "color": "#6691F4"
+  },
+  {
+    "name": "off-site",
+    "lodging_type": "offsite",
+    "capacity": 99999,
+    "url": "",
+    "title": "",
+    "description": "",
+    "image_url": "",
+    "color": ""
   }
 ]

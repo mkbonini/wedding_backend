@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_26_214106) do
+ActiveRecord::Schema.define(version: 2022_12_30_191512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_12_26_214106) do
     t.integer "rsvp"
     t.string "diet"
     t.integer "payment_method"
-    t.string "arrival_date"
+    t.integer "arrival_date"
     t.integer "party_count"
     t.integer "plus_one_count"
     t.string "comments"
