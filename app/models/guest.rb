@@ -5,7 +5,7 @@ class Guest < ApplicationRecord
   has_many :plus_ones
   after_initialize :set_defaults
   validates_presence_of :first_name, :last_name
-
+  before_save :format_values
   enum rsvp:  {no: 0, yes: 1, pending: 2}, _prefix: :rsvp
   enum breakfast: {no: 0, yes: 1}, _prefix: :breakfast
   enum arrival_date:  {friday: 0, saturday: 1}
@@ -13,10 +13,16 @@ class Guest < ApplicationRecord
   def full_name
     [first_name, last_name].join(' ')
   end
+
   private
   def set_defaults
     self.plus_one_count ||= 0 
     self.party_count ||= 1
     self.bed_count ||= 1
+  end
+
+  def format_values
+    self.first_name = self.first_name.strip
+    self.last_name = self.last_name.strip
   end
 end
