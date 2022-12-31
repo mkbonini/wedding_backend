@@ -6,6 +6,7 @@ class Kid < ApplicationRecord
   after_destroy :decrese_party_count
 
   enum needs_bed: { "no": 0, "yes": 1 }
+  enum child_care: { "sitter": 0, "guardian": 1 }
 
   private
   def increase_party_count

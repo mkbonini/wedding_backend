@@ -28,11 +28,11 @@ class KidsController < ApplicationController
   private
 
   def kid_params
-    model_attributes = [:name, :age, :guest_id, :team_id, :lodging_id, :needs_bed]
+    model_attributes = [:name, :age, :guest_id, :team_id, :lodging_id, :needs_bed, :child_care]
     if params.key? '_json'
       params.permit(_json: model_attributes)['_json'] 
     else
-      params.permit(:name, :age, :guest_id, :team_id, :lodging_id, :needs_bed)
+      params.permit(:name, :age, :guest_id, :team_id, :lodging_id, :needs_bed, :child_care)
     end
   end
 
