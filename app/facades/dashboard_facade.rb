@@ -26,6 +26,7 @@ class DashboardFacade
     diet_list = Guest.where.not(diet: nil).map do |guest|
       d = {}
       d[:guest_id] = guest.id
+      d[:name] = guest.full_name
       d[:diet] = guest.diet
       d
     end
