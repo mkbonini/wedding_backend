@@ -16,6 +16,7 @@ class DashboardFacade
     comment_list = Guest.where.not(comments: nil).map do |guest|
       c = {}
       c[:guest_id] = guest.id
+      c[:name] = guest.full_name
       c[:comment] = guest.comments
       c
     end
