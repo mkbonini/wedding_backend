@@ -1,8 +1,8 @@
 class DashboardFacade
   def initialize
-    @guests = Guest.all
-    @attending = Guest.rsvp_yes
-    @not_attending = Guest.rsvp_no
+    @guests = Guest.all.order(updated_at: :desc )
+    @attending = Guest.rsvp_yes.order(updated_at: :desc )
+    @not_attending = Guest.rsvp_no.order(updated_at: :desc )
     @comments = comments()
     @diets = diets()
     @rsvp_statistics = rsvp_statistics()
@@ -13,7 +13,7 @@ class DashboardFacade
   end
 
   def comments
-    comment_list = Guest.where.not(comments: nil).map do |guest|
+    comment_list = Guest.where.not(comments: nil).order(updated_at: :desc ).map do |guest|
       c = {}
       c[:guest_id] = guest.id
       c[:name] = guest.full_name
@@ -23,7 +23,7 @@ class DashboardFacade
   end
 
   def diets
-    diet_list = Guest.where.not(diet: nil).map do |guest|
+    diet_list = Guest.where.not(diet: nil).order(updated_at: :desc ).map do |guest|
       d = {}
       d[:guest_id] = guest.id
       d[:name] = guest.full_name
