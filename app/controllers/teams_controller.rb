@@ -26,7 +26,8 @@ class TeamsController < ApplicationController
     end
 
     def dodge
-      if params["name"].class == "Array"
+      # binding.pry
+      # if params["name"].class == "Array"
         params["name"].each do |name|
           @guest = Guest.where("first_name || ' ' || last_name like :n", :n => "%#{name}")
           @kid = Kid.find_by(name: name)
@@ -40,12 +41,12 @@ class TeamsController < ApplicationController
           else
           end
         end
-      else
-        @guest = Guest.where("first_name || ' ' || last_name like :n", :n => "%#{params["name"]}")
-        if @guest
-          @guest.update(team_id: 1)
-        end
-      end
+      # else
+      #   @guest = Guest.where("first_name || ' ' || last_name like :n", :n => "%#{params["name"]}")
+      #   if @guest
+      #     @guest.update(team_id: 1)
+      #   end
+      # end
     end
   
     private
