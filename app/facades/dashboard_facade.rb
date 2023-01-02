@@ -5,6 +5,7 @@ class DashboardFacade
     @not_attending = Guest.rsvp_no.order(updated_at: :desc )
     @comments = comments()
     @diets = diets()
+    @Lodgings = lodging_list()
     @rsvp_statistics = rsvp_statistics()
     @breakfast_statistics = breakfast_statistics()
     @lodging_statistics = lodging_statistics()
@@ -29,6 +30,16 @@ class DashboardFacade
       d[:name] = guest.full_name
       d[:diet] = guest.diet
       d
+    end
+  end
+
+  def lodging_list
+    lodgings = Lodging.all.map do |lodge|
+      l = {}
+      l[:name] = lodge.name
+      l[:title] = lodge.title
+      l[:occupants] = lodge.occupants
+      l
     end
   end
 
