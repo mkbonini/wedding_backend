@@ -32,8 +32,9 @@ class TeamsController < ApplicationController
           @guest = Guest.where("first_name || ' ' || last_name like :n", :n => "%#{name}")
           @kid = Kid.find_by(name: name)
           @plus_one = PlusOne.find_by(name: name)
-          if @guest
-            @guest.update(team_id: 1)
+          if @guest.count > 0
+            @guest.first.update(team_id: 1)
+            binding.pry
           elsif @kid
             @kid.update(team_id: 1)
           elsif @plus_one
