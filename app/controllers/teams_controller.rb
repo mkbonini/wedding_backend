@@ -34,7 +34,7 @@ class TeamsController < ApplicationController
           @plus_one = PlusOne.find_by(name: name)
           if @guest.count > 0
             @guest.first.update(team_id: 1)
-            binding.pry
+            # binding.pry
           elsif @kid
             @kid.update(team_id: 1)
           elsif @plus_one
