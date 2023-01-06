@@ -232,7 +232,7 @@
   {
     "name": "off-site",
     "lodging_type": "offsite",
-    "capacity": 99999,
+    "capacity": 99,
     "url": "",
     "title": "",
     "description": "",

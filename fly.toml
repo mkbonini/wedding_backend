@@ -1,4 +1,4 @@
-# fly.toml file generated for wedding-backend on 2023-01-06T13:36:10-07:00
+# fly.toml file generated for wedding-backend on 2023-01-06T13:58:10-07:00
 
 app = "wedding-backend"
 kill_signal = "SIGINT"
