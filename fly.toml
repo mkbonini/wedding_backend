@@ -1,6 +1,6 @@
-# fly.toml file generated for wedding-backend on 2023-01-06T13:58:10-07:00
+# fly.toml file generated for wedding-be on 2023-01-06T14:08:01-07:00
 
-app = "wedding-backend"
+app = "wedding-be"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []

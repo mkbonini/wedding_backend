@@ -5,7 +5,7 @@ class DashboardFacade
     @not_attending = Guest.rsvp_no.order(updated_at: :desc )
     @comments = comments()
     @diets = diets()
-    @Lodgings = lodging_list()
+    @lodgings = lodging_list()
     @rsvp_statistics = rsvp_statistics()
     @breakfast_statistics = breakfast_statistics()
     @lodging_statistics = lodging_statistics()
