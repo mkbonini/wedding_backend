@@ -31,8 +31,8 @@ class GuestsController < ApplicationController
         end
       end
       @guest.update(guest_params)
-      head :no_content
-
+      # head :no_content
+      guest_response(@guest)
       # GuestMailer.with(guest: @guest).welcome_email.deliver_later
     end
   
