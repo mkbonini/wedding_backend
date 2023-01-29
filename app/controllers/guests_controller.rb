@@ -1,5 +1,5 @@
 class GuestsController < ApplicationController
-    before_action :set_guest, only: [:show, :update, :destroy, :email]
+    before_action :set_guest, only: [:show, :update, :destroy, :email, :kids]
 
     def index
       @guests = Guest.all
@@ -8,7 +8,8 @@ class GuestsController < ApplicationController
   
     def create
       @guest = Guest.create!(guest_params)
-      guest_response(@guest, :created)
+      head :no_content
+      # guest_response(@guest, :created)
     end
   
     def show
@@ -31,8 +32,8 @@ class GuestsController < ApplicationController
         end
       end
       @guest.update(guest_params)
-      # head :no_content
-      guest_response(@guest)
+      head :no_content
+      # guest_response(@guest)
       # GuestMailer.with(guest: @guest).welcome_email.deliver_later
     end
   
@@ -45,6 +46,13 @@ class GuestsController < ApplicationController
       GuestMailer.with(guest: @guest).welcome_email.deliver_later
     end
 
+    def kids
+      @guest.kids.delete_all
+      @kids = @guest.kids.create!(kid_params)
+      # guest_response(@guest, :created)
+      head :no_content
+    end
+
     private
   
     def guest_params
@@ -53,6 +61,15 @@ class GuestsController < ApplicationController
         params.permit(_json: model_attributes)['_json'] 
       else
         params.permit(:first_name, :last_name, :rsvp, :email, :diet, :breakfast, :payment_method, :arrival_date, :party_count, :bed_count, :plus_one_count, :comments, :team_id, :lodging_id)
+      end
+    end
+
+    def kid_params
+      model_attributes = [:name, :age, :guest_id, :team_id, :lodging_id, :needs_bed, :child_care]
+      if params.key? '_json'
+        params.permit(_json: model_attributes)['_json'] 
+      else
+        params.permit(:name, :age, :guest_id, :team_id, :lodging_id, :needs_bed, :child_care)
       end
     end
 

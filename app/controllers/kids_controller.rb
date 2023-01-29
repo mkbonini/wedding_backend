@@ -8,7 +8,8 @@ class KidsController < ApplicationController
 
   def create
     @kid = Kid.create!(kid_params)
-    json_response(@kid, :created)
+    # json_response(@kid, :created)
+    head :no_content
   end
 
   def show
