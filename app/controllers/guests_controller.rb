@@ -47,9 +47,18 @@ class GuestsController < ApplicationController
     end
 
     def kids
-      @guest.kids.delete_all
-      @kids = @guest.kids.create!(kid_params)
-      # guest_response(@guest, :created)
+      ids = []
+      kid_params.each do |kid_data|
+        if kid_data.key?("id")  and kid_data["id"] != nil
+          ids << kid_data["id"]
+          kid = Kid.find(kid_data["id"])
+          kid.update!(kid_data)
+        else
+          kid = @guest.kids.create!(kid_data)
+          ids << kid.id
+        end
+      end
+      @guest.kids.where.not(id: ids).delete_all
       head :no_content
     end
 
@@ -65,7 +74,7 @@ class GuestsController < ApplicationController
     end
 
     def kid_params
-      model_attributes = [:name, :age, :guest_id, :team_id, :lodging_id, :needs_bed, :child_care]
+      model_attributes = [:id, :name, :age, :guest_id, :team_id, :lodging_id, :needs_bed, :child_care]
       if params.key? '_json'
         params.permit(_json: model_attributes)['_json'] 
       else
