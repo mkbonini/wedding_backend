@@ -18,7 +18,7 @@ class Kid < ApplicationRecord
   end
 
   def decrese_party_count
-    @guest = Guest.find(self.guest_id)
+    guest = Guest.find(self.guest_id)
     party_count = guest.party_count - 1
     bed_count = guest.bed_count
     bed_count -= 1 if needs_bed == "yes"
