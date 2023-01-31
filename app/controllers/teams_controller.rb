@@ -26,15 +26,12 @@ class TeamsController < ApplicationController
     end
 
     def dodge
-      # binding.pry
-      # if params["name"].class == "Array"
-        params["name"].each do |name|
+        params["yes"].each do |name|
           @guest = Guest.where("first_name || ' ' || last_name like :n", :n => "%#{name}")
           @kid = Kid.find_by(name: name)
           @plus_one = PlusOne.find_by(name: name)
           if @guest.count > 0
             @guest.first.update!(team_id: 1)
-            # binding.pry
           elsif @kid
             @kid.update!(team_id: 1)
           elsif @plus_one
@@ -42,18 +39,27 @@ class TeamsController < ApplicationController
           else
           end
         end
-      # else
-      #   @guest = Guest.where("first_name || ' ' || last_name like :n", :n => "%#{params["name"]}")
-      #   if @guest
-      #     @guest.update(team_id: 1)
-      #   end
-      # end
+
+        params["no"].each do |name|
+          @guest = Guest.where("first_name || ' ' || last_name like :n", :n => "%#{name}")
+          @kid = Kid.find_by(name: name)
+          @plus_one = PlusOne.find_by(name: name)
+          if @guest.count > 0
+            @guest.first.update!(team_id: nil)
+            # binding.pry
+          elsif @kid
+            @kid.update!(team_id: nil)
+          elsif @plus_one
+            @plus_one.update!(team_id: nil)
+          else
+          end
+        end
     end
   
     private
   
     def team_params
-      params.permit(:name, :theme, :_json)
+      params.permit(:name, :theme, :yes, :no)
     end
   
     def set_team
