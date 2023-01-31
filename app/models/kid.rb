@@ -28,7 +28,6 @@ class Kid < ApplicationRecord
 
   def update_bed_count
     guest = Guest.find(self.guest_id)
-    binding.pry
     bed_count = guest.bed_count
     if needs_bed == "no" and lodging_id != nil
       self.update_attributes(:lodging_id => nil)
