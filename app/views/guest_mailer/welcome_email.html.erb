@@ -92,7 +92,7 @@
 <table border="0" cellpadding="0" cellspacing="0" class="image_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
 <tr>
 <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
-<div align="center" class="alignment" style="line-height:10px"><%= image_tag(attachments['Group_4.svg'].url), :class => "big", :style => "display: block; height: auto; border: 0; width: 640px; max-width: 100%;", :width => "640" %></div>
+<div align="center" class="alignment" style="line-height:10px"><%= image_tag attachments['Group_4.svg'].url, :class => "big", :style => "display: block; height: auto; border: 0; width: 640px; max-width: 100%;", :width => "640" %></div>
 </td>
 </tr>
 </table>
@@ -134,7 +134,7 @@
 <td class="pad" style="padding-bottom:25px;padding-left:60px;padding-right:60px;padding-top:10px;">
 <div style="font-family: sans-serif">
 <div class="" style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
-<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:18px;">[name],</span></p>
+<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:18px;"><%= @guest.full_name %>,</span></p>
 <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:18px;">You RSVP'ed!</span><strong><span style="font-size:18px;"><br/><br/></span></strong></p>
 <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:14px;"><span style="">Thank you for your RSVP. We are so so excited you can make it! Below are details from your reservation. If you need to update your information, you can do so by going through the flow again at</span></span></p>
 <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:14px;"><span style=""><a href="http://www.mikemiwha.love" rel="noopener" style="text-decoration: underline; color: #6871e4;" target="_blank">mikemiwha.love</a></span></span></p>
@@ -243,7 +243,7 @@
 <div style="font-family: sans-serif">
 <div class="" style="font-size: 12px; mso-line-height-alt: 18px; color: #000000; line-height: 1.5; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
 <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;">Your Party Includes</span></p>
-<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;">[guests]</span></p>
+<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;"><%= @guest.party %></span></p>
 </div>
 </div>
 </td>
@@ -284,7 +284,7 @@
 <div style="font-family: sans-serif">
 <div class="" style="font-size: 12px; mso-line-height-alt: 18px; color: #000000; line-height: 1.5; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
 <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;">Arriving On</span></p>
-<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;">[arrival_day]</span></p>
+<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;"><%= @guest.arrival_date %></span></p>
 </div>
 </div>
 </td>
@@ -325,7 +325,7 @@
 <div style="font-family: sans-serif">
 <div class="" style="font-size: 12px; mso-line-height-alt: 18px; color: #000000; line-height: 1.5; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
 <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;">Staying In Cabin</span></p>
-<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;">[rsvp], [cabin_name]</span></p>
+<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;"><%= @guest.lodging_response %>, <%= @guest.lodging.name %></span></p>
 </div>
 </div>
 </td>
@@ -366,7 +366,7 @@
 <div style="font-family: sans-serif">
 <div class="" style="font-size: 12px; mso-line-height-alt: 18px; color: #000000; line-height: 1.5; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
 <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;">Total Beds Reserved</span></p>
-<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;">[bed_count]</span></p>
+<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;"><%= @guest.bed_count %></span></p>
 </div>
 </div>
 </td>
@@ -401,13 +401,14 @@
 </td>
 </tr>
 </table>
+<% if @guest.kids.count > 0 %>
 <table border="0" cellpadding="0" cellspacing="0" class="text_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
 <tr>
 <td class="pad" style="padding-bottom:10px;padding-left:10px;padding-right:10px;padding-top:20px;">
 <div style="font-family: sans-serif">
 <div class="" style="font-size: 12px; mso-line-height-alt: 18px; color: #000000; line-height: 1.5; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
 <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;">Child Care During Ceremony / Dinner</span></p>
-<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;">[child_care]</span></p>
+<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;"><%= @guest.kids.first.child_care %></span></p>
 </div>
 </div>
 </td>
@@ -442,13 +443,14 @@
 </td>
 </tr>
 </table>
+<% end %>
 <table border="0" cellpadding="0" cellspacing="0" class="text_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
 <tr>
 <td class="pad" style="padding-bottom:10px;padding-left:10px;padding-right:10px;padding-top:20px;">
 <div style="font-family: sans-serif">
 <div class="" style="font-size: 12px; mso-line-height-alt: 18px; color: #000000; line-height: 1.5; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
 <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;">Sunday Breakfast</span></p>
-<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;">[breakfast]</span></p>
+<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;"><%= @guest.breakfast %></span></p>
 </div>
 </div>
 </td>
@@ -489,7 +491,7 @@
 <div style="font-family: sans-serif">
 <div class="" style="font-size: 12px; mso-line-height-alt: 18px; color: #000000; line-height: 1.5; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
 <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;">Food Allergies or Restrictions</span></p>
-<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;">[diet]</span></p>
+<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;"><%= @guest.diet %></span></p>
 </div>
 </div>
 </td>
@@ -524,6 +526,7 @@
 </td>
 </tr>
 </table>
+<% if @guest.dodgeball.count > 0 %>
 <table border="0" cellpadding="0" cellspacing="0" class="text_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
 <tr>
 <td class="pad" style="padding-bottom:10px;padding-left:10px;padding-right:10px;padding-top:20px;">
@@ -532,9 +535,9 @@
 <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;">Participating In Dodgeball</span></p>
 <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;">You’ll be notified which team you are on once all RSVP’s are received</p>
 <ul style="line-height: 1.5; mso-line-height-alt: 21px; font-size: 14px;">
-<li style="text-align: left;">[name]</li>
-<li style="text-align: left;">[name]</li>
-<li style="text-align: left;">[name]</li>
+<% @guest.dodgeball.each do |participant| %>
+<li style="text-align: left;"><%= participant %></li>
+<% end %>
 </ul>
 </div>
 </div>
@@ -570,13 +573,14 @@
 </td>
 </tr>
 </table>
+<% end %>
 <table border="0" cellpadding="0" cellspacing="0" class="text_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
 <tr>
 <td class="pad" style="padding-bottom:10px;padding-left:10px;padding-right:10px;padding-top:20px;">
 <div style="font-family: sans-serif">
 <div class="" style="font-size: 12px; mso-line-height-alt: 18px; color: #000000; line-height: 1.5; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
 <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;">Comments or Questions</span></p>
-<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;">[comments]</span></p>
+<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;"><%= @guest.comments %></span></p>
 </div>
 </div>
 </td>
@@ -585,7 +589,7 @@
 <table border="0" cellpadding="0" cellspacing="0" class="image_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
 <tr>
 <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:85px;padding-bottom:85px;">
-<div align="center" class="alignment" style="line-height:10px"><%= image_tag(attachments['Group_2.svg'].url), :class => "big", :style => "display: block; height: auto; border: 0; width: 362px; max-width: 100%;", :width => "362" %></div>
+<div align="center" class="alignment" style="line-height:10px"><%= image_tag attachments['Group_2.svg'].url, :class => "big", :style => "display: block; height: auto; border: 0; width: 362px; max-width: 100%;", :width => "362" %></div>
 </td>
 </tr>
 </table>
@@ -618,9 +622,9 @@
 <div align="center" class="alignment">
 <table border="0" cellpadding="0" cellspacing="0" class="social-table" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block;" width="108px">
 <tr>
-<td style="padding:0 2px 0 2px;"><a href="https://www.instagram.com/miwhag" target="_blank"><%= image_tag(attachments['instagram2x.png'].url), :style => "display: block; height: auto; border: 0;", :width => "32",  :height => "32", :title => "instagram", :alt => "Instagram" %></a></td>
-<td style="padding:0 2px 0 2px;"><a href="mailto:mikemiwha@gmail.com" target="_blank"><%= image_tag(attachments['mail2x.png'].url), :style => "display: block; height: auto; border: 0;", :width => "32",  :height => "32", :title => "E-Mail", :alt => "E-Mail" %></a></td>
-<td style="padding:0 2px 0 2px;"><a href="www.mikemiwha.love" target="_blank"><%= image_tag(attachments['website2x.png'].url), :style => "display: block; height: auto; border: 0;", :width => "32",  :height => "32", :title => "Web Site", :alt => "Web Site" %></a></td>
+<td style="padding:0 2px 0 2px;"><a href="https://www.instagram.com/miwhag" target="_blank"><%= image_tag attachments['instagram2x.png'].url, :style => "display: block; height: auto; border: 0;", :width => "32",  :height => "32", :title => "instagram", :alt => "Instagram" %></a></td>
+<td style="padding:0 2px 0 2px;"><a href="mailto:mikemiwha@gmail.com" target="_blank"><%= image_tag attachments['mail2x.png'].url, :style => "display: block; height: auto; border: 0;", :width => "32",  :height => "32", :title => "E-Mail", :alt => "E-Mail" %></a></td>
+<td style="padding:0 2px 0 2px;"><a href="www.mikemiwha.love" target="_blank"><%= image_tag attachments['website2x.png'].url, :style => "display: block; height: auto; border: 0;", :width => "32",  :height => "32", :title => "Web Site", :alt => "Web Site" %></a></td>
 </tr>
 </table>
 </div>

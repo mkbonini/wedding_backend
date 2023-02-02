@@ -1,5 +1,5 @@
 # Preview all emails at http://localhost:3000/rails/mailers/guest
-class GuestPreview < ActionMailer::Preview
+class GuestMailerPreview < ActionMailer::Preview
     def welcome_email
         lodgings = FactoryBot.create(:lodging)
         team = FactoryBot.create(:team)

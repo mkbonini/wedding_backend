@@ -14,6 +14,40 @@ class Guest < ApplicationRecord
     [first_name, last_name].join(' ')
   end
 
+  def party
+    party = self.full_name
+
+    self.kids.each do |kid|
+      party = party + ", " + kid.name
+    end
+
+    self.plus_ones.each do |po|
+      party = party + ", " +  po.name
+    end
+    return party
+  end
+
+  def lodging_response
+    if lodging.name == "offsite"
+      return "No"
+    else
+      return "Yes"
+    end
+  end
+
+  def dodgeball
+    dodge = []
+    dodge << self.full_name if self.team_id != nil
+    self.kids.each do |kid|
+      dodge << kid.name if kid.team_id != nil
+    end
+
+    self.plus_ones.each do |po|
+      dodge << po.name if po.team_id != nil
+    end
+    return dodge
+  end
+
   private
   def set_defaults
     self.plus_one_count ||= 0 
