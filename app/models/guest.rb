@@ -30,7 +30,7 @@ class Guest < ApplicationRecord
   end
 
   def lodging_response
-    if lodging.name == "offsite"
+    if lodging.name == "off-site"
       return "No"
     else
       return "Yes"
