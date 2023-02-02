@@ -13,13 +13,13 @@ lodgings_list.each do |lodging|
 end
 lodgings = Lodging.all
 team = FactoryBot.create(:team)
-guests = []
-20.times.with_index do |i|
-  lodging_id = lodgings.sample.id
-  guest = FactoryBot.create(:guest, lodging_id: lodging_id) 
-  if i % 3 == 0
-    kids = FactoryBot.create(:kid, lodging_id: lodging_id, guest_id: guest.id)
-    plus_ones = FactoryBot.create(:plus_one, lodging_id: lodging_id, guest_id: guest.id) 
-  end
-  guests << guest
-end
+# guests = []
+# 20.times.with_index do |i|
+#   lodging_id = lodgings.sample.id
+#   guest = FactoryBot.create(:guest, lodging_id: lodging_id) 
+#   if i % 3 == 0
+#     kids = FactoryBot.create(:kid, lodging_id: lodging_id, guest_id: guest.id)
+#     plus_ones = FactoryBot.create(:plus_one, lodging_id: lodging_id, guest_id: guest.id) 
+#   end
+#   guests << guest
+# end
