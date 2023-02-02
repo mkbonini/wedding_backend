@@ -6,6 +6,8 @@ class Guest < ApplicationRecord
   after_initialize :set_defaults
   validates_presence_of :first_name, :last_name
   before_save :format_values
+  before_update :remove_associations, if: :will_save_change_to_rsvp?
+
   enum rsvp:  {no: 0, yes: 1, pending: 2}, _prefix: :rsvp
   enum breakfast: {no: 0, yes: 1}, _prefix: :breakfast
   enum arrival_date:  {friday: 0, saturday: 1}
@@ -46,6 +48,20 @@ class Guest < ApplicationRecord
       dodge << po.name if po.team_id != nil
     end
     return dodge
+  end
+
+  def remove_associations
+    if self.rsvp == "no" and self.lodging_id != nil
+      self.update_attributes(:lodging_id => nil, :team_id => nil, :breakfast => nil)
+
+      self.kids.each do |kid|
+        kid.update_attributes(:lodging_id => nil, :team_id => nil)
+      end
+  
+      self.plus_ones.each do |po|
+        po.update_attributes(:lodging_id => nil, :team_id => nil)
+      end
+    end
   end
 
   private
