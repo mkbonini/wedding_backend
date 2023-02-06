@@ -46,6 +46,7 @@ class GuestsController < ApplicationController
     
     def email
       GuestMailer.with(guest: @guest).welcome_email.deliver_later
+      GuestMailer.with(guest: @guest).notification_email.deliver_later
     end
 
     def kids
