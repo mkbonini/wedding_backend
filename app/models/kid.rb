@@ -2,7 +2,7 @@ class Kid < ApplicationRecord
   belongs_to :guest
   belongs_to :team, optional: true
   belongs_to :lodging, optional: true
-  after_create :increase_party_count
+  after_create :increase_party_count, :set_lodging_id
   after_destroy :decrese_party_count
   before_update :update_bed_count, if: :will_save_change_to_needs_bed?
 
@@ -36,5 +36,14 @@ class Kid < ApplicationRecord
     end
     bed_count += 1 if needs_bed == "yes"
     guest.update_attributes(:bed_count => bed_count)
+  end
+
+  def set_lodging_id
+    guest = Guest.find(self.guest_id)
+    lodging_id = guest.lodging_id
+    lodging = Lodging.find(lodging_id) if lodging_id != nil
+    if needs_bed == "yes" and lodging_id != nil and lodging.spots_remaining > 0
+      self.update_attributes(:lodging_id => lodging_id)
+    end
   end
 end
