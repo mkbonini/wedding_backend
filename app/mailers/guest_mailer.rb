@@ -20,7 +20,7 @@ class GuestMailer < ApplicationMailer
       attachments.inline["mail2x.png"] = File.read("#{Rails.root}/app/assets/images/mail2x.png")
       attachments.inline["website2x.png"] = File.read("#{Rails.root}/app/assets/images/website2x.png")
 
-      mail(to: @guest.email, subject: "You're dead to us ...")
+      mail(to: @guest.email, subject: "ya dead to us ...")
     end
 
     def notification_email
