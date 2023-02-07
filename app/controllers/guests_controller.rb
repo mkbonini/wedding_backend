@@ -45,7 +45,11 @@ class GuestsController < ApplicationController
     end
     
     def email
-      GuestMailer.with(guest: @guest).welcome_email.deliver_later
+      if @guest.rsvp == "no"
+        GuestMailer.with(guest: @guest).no_email.deliver_later
+      else
+        GuestMailer.with(guest: @guest).welcome_email.deliver_later
+      end
       GuestMailer.with(guest: @guest).notification_email.deliver_later
     end
 
