@@ -18,9 +18,11 @@ class GuestsController < ApplicationController
   
     def update
       if guest_params.include?('lodging_id')
-        @lodging = Lodging.find(guest_params['lodging_id'])
-        if @lodging.guests.count + @lodging.kids.count + @lodging.plus_ones.count + @guest.bed_count > @lodging.capacity
-          return json_response("There is not enough space in the lodging selected", :bad_request)
+        if guest_params['lodging_id'] != nil
+          @lodging = Lodging.find(guest_params['lodging_id']) 
+          if @lodging.guests.count + @lodging.kids.count + @lodging.plus_ones.count + @guest.bed_count > @lodging.capacity
+            return json_response("There is not enough space in the lodging selected", :bad_request)
+          end
         end
         @guest.kids.each do |kid|
           if kid.needs_bed == "yes"
@@ -43,7 +45,12 @@ class GuestsController < ApplicationController
     end
     
     def email
-      GuestMailer.with(guest: @guest).welcome_email.deliver_later
+      if @guest.rsvp == "no"
+        GuestMailer.with(guest: @guest).no_email.deliver_later
+      else
+        GuestMailer.with(guest: @guest).welcome_email.deliver_later
+      end
+      GuestMailer.with(guest: @guest).notification_email.deliver_later
     end
 
     def kids
