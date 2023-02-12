@@ -5,6 +5,7 @@ class DashboardFacade
     @not_attending = Guest.rsvp_no.order(updated_at: :desc )
     @comments = comments()
     @diets = diets()
+    @diet_keywords = diet_keywords()
     @lodgings = lodging_list()
     @rsvp_statistics = rsvp_statistics()
     @breakfast_statistics = breakfast_statistics()
@@ -31,6 +32,42 @@ class DashboardFacade
       d[:diet] = guest.diet
       d
     end
+  end
+
+  def diet_keywords
+    keywords = {	
+      "shellfish" => 0,
+      "milk" => 0,
+      "egg" => 0,
+      "soy" => 0,
+      "wheat" => 0,
+      "tree nut"  => 0,
+      "nut"  => 0,
+      "pine nut"  => 0,
+      "peanut" => 0,
+      "gluten" => 0,
+      "lactose" => 0,
+      "keto" => 0,
+      "kosher" => 0,
+      "vegetarian" => 0,
+      "vegan" => 0,
+      "mango" => 0,
+      "pistachio" => 0,
+      "pescatarian" => 0,
+      "fish" => 0,
+      "sesame" => 0,
+      "coconut" => 0,
+      "dairy" => 0,
+      "avocado" => 0,
+  }
+    diet_list = Guest.where.not(diet: nil).order(updated_at: :desc ).map do |guest|
+      keywords.each do |key, value|
+       if guest.diet.downcase.include?(key)
+        keywords[key] += 1
+       end
+      end
+    end
+    keywords
   end
 
   def lodging_list
