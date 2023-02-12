@@ -16,7 +16,6 @@ class Lodging < ApplicationRecord
         ordered_list = (ordered_list + occupant_list).uniq
 
         name_list = ordered_list.map do |occupant|
-            # binding.pry
             if occupant.class == Guest
                 occupant.first_name + " " + occupant.last_name
             else
