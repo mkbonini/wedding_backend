@@ -67,7 +67,7 @@ class DashboardFacade
        end
       end
     end
-    keywords
+    keywords.select {|k,v| v != 0}
   end
 
   def lodging_list
