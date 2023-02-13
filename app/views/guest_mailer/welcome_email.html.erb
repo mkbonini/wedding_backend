@@ -46,7 +46,6 @@
 				display: inline-block !important;
 			}
 
-			.image_block img.big,
 			.row-content {
 				width: 100% !important;
 			}
@@ -81,18 +80,27 @@
 <tbody>
 <tr>
 <td>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto;" width="100%">
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
 <tbody>
 <tr>
 <td>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto; color: #000000; width: 640px;" width="640">
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width="640">
 <tbody>
 <tr>
-<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 35px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
-<table border="0" cellpadding="0" cellspacing="0" class="image_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 20px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
+<table border="0" cellpadding="0" cellspacing="0" class="text_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
 <tr>
-<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
-<div align="center" class="alignment" style="line-height:10px"><%= image_tag attachments['header.png'].url, :class => "big", :style => "display: block; height: auto; border: 0; width: 640px; max-width: 100%;", :width => "640" %></div>
+<td class="pad" style="padding-bottom:25px;padding-left:15px;padding-right:15px;padding-top:45px;">
+<div style="font-family: sans-serif">
+<div class="" style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
+<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:18px;"><%= @guest.full_name %>,</span></p>
+<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:18px;">You RSVP'ed!</span><strong><span style="font-size:18px;"><br/><br/></span></strong></p>
+<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:14px;"><span style="">Thank you for your RSVP. We are so excited you can make it! </span></span></p>
+<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:14px;"><span style="">Below are details from your reservation. If you need to update your information, </span></span></p>
+<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:14px;"><span style="">you can do so by going through the flow again at</span></span></p>
+<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:14px;"><span style=""> </span></span><span style="font-size:14px;"><span style=""><a href="http://www.mikemiwha.love/rsvp" rel="noopener" style="text-decoration: underline; color: #6871e4;" target="_blank">mikemiwha.love/rsvp</a></span></span></p>
+</div>
+</div>
 </td>
 </tr>
 </table>
@@ -111,8 +119,136 @@
 <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width="640">
 <tbody>
 <tr>
-<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
-<div class="spacer_block" style="height:50px;line-height:50px;font-size:1px;"> </div>
+<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="25%">
+<table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+<td class="pad" style="padding-top:10px;width:100%;padding-right:0px;padding-left:0px;">
+<div align="center" class="alignment" style="line-height:10px"><img alt="I'm an image" src="https://i.postimg.cc/zD7QvjGX/check-in-1.png" style="display: block; height: auto; border: 0; width: 48px; max-width: 100%;" title="I'm an image" width="48"/></div>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="text_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+<tr>
+<td class="pad" style="padding-left:10px;padding-right:10px;padding-top:10px;">
+<div style="font-family: sans-serif">
+<div class="" style="font-size: 12px; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2;">
+<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;">Check In</p>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="text_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+<tr>
+<td class="pad" style="padding-bottom:10px;padding-left:5px;padding-right:5px;padding-top:5px;">
+<div style="font-family: sans-serif">
+<div class="" style="font-size: 12px; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2;">
+<p style="margin: 0; font-size: 12px; text-align: center; mso-line-height-alt: 14.399999999999999px;">July 21, 2023 </p>
+<p style="margin: 0; font-size: 12px; text-align: center; mso-line-height-alt: 14.399999999999999px;">Anytime after</p>
+<p style="margin: 0; font-size: 12px; text-align: center; mso-line-height-alt: 14.399999999999999px;">3:00 PM</p>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td class="column column-2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="25%">
+<table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:5px;">
+<div align="center" class="alignment" style="line-height:10px"><img alt="I'm an image" src="https://i.postimg.cc/TPBm2BZ5/check-out-1.png" style="display: block; height: auto; border: 0; width: 48px; max-width: 100%;" title="I'm an image" width="48"/></div>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="text_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+<tr>
+<td class="pad" style="padding-left:10px;padding-right:10px;padding-top:10px;">
+<div style="font-family: sans-serif">
+<div class="" style="font-size: 12px; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2;">
+<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;">Check Out</p>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="text_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+<tr>
+<td class="pad" style="padding-bottom:10px;padding-left:5px;padding-right:5px;padding-top:5px;">
+<div style="font-family: sans-serif">
+<div class="" style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
+<p style="margin: 0; font-size: 12px; text-align: center; mso-line-height-alt: 14.399999999999999px;">July 23, 2023</p>
+<p style="margin: 0; font-size: 12px; text-align: center; mso-line-height-alt: 14.399999999999999px;">Anytime before</p>
+<p style="margin: 0; font-size: 12px; text-align: center; mso-line-height-alt: 14.399999999999999px;">10:00 AM</p>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td class="column column-3" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="25%">
+<table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:5px;">
+<div align="center" class="alignment" style="line-height:10px"><img alt="I'm an image" src="https://i.postimg.cc/CLMZ0Fz6/mountain-3.png" style="display: block; height: auto; border: 0; width: 48px; max-width: 100%;" title="I'm an image" width="48"/></div>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="text_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+<tr>
+<td class="pad" style="padding-left:10px;padding-right:10px;padding-top:10px;">
+<div style="font-family: sans-serif">
+<div class="" style="font-size: 12px; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2;">
+<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;">Venue</p>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="text_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+<tr>
+<td class="pad" style="padding-bottom:10px;padding-left:5px;padding-right:5px;padding-top:5px;">
+<div style="font-family: sans-serif">
+<div class="" style="font-size: 12px; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2;">
+<p style="margin: 0; font-size: 12px; text-align: center; mso-line-height-alt: 14.399999999999999px;">Deer Creek Mountain</p>
+<p style="margin: 0; font-size: 12px; text-align: center; mso-line-height-alt: 14.399999999999999px;">Camp at 228 S Pine Dr</p>
+<p style="margin: 0; font-size: 12px; text-align: center; mso-line-height-alt: 14.399999999999999px;">Bailey, CO 80421</p>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</td>
+<td class="column column-4" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="25%">
+<table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:5px;">
+<div align="center" class="alignment" style="line-height:10px"><img alt="I'm an image" src="https://i.postimg.cc/8CCQk0hG/car-1.png" style="display: block; height: auto; border: 0; width: 48px; max-width: 100%;" title="I'm an image" width="48"/></div>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="text_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+<tr>
+<td class="pad" style="padding-left:10px;padding-right:10px;padding-top:10px;">
+<div style="font-family: sans-serif">
+<div class="" style="font-size: 12px; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2;">
+<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;">Carpooling</p>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="text_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+<tr>
+<td class="pad" style="padding-bottom:10px;padding-left:5px;padding-right:5px;padding-top:5px;">
+<div style="font-family: sans-serif">
+<div class="" style="font-size: 12px; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2;">
+<p style="margin: 0; font-size: 12px; text-align: center; mso-line-height-alt: 14.399999999999999px;">To coordinate with</p>
+<p style="margin: 0; font-size: 12px; text-align: center; mso-line-height-alt: 14.399999999999999px;">other travelers<br/><a href="https://docs.google.com/spreadsheets/d/1EUYa1w7it9x6PihszxQS8HF6ZLJTQyKMmXzAhl9x1VI/edit?usp=sharing" rel="noopener" style="text-decoration: underline; color: #6e77ea;" target="_blank">add your info here</a></p>
+</div>
+</div>
+</td>
+</tr>
+</table>
 </td>
 </tr>
 </tbody>
@@ -128,112 +264,11 @@
 <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width="640">
 <tbody>
 <tr>
-<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
-<table border="0" cellpadding="0" cellspacing="0" class="text_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-<tr>
-<td class="pad" style="padding-bottom:25px;padding-left:60px;padding-right:60px;padding-top:10px;">
-<div style="font-family: sans-serif">
-<div class="" style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
-<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:18px;"><%= @guest.full_name %>,</span></p>
-<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:18px;">You RSVP'ed!</span><strong><span style="font-size:18px;"><br/><br/></span></strong></p>
-<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:14px;"><span style="">Thank you for your RSVP. We are so so excited you can make it! Below are details from your reservation. If you need to update your information, you can do so by going through the flow again at</span></span></p>
-<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 16.8px;"><span style="font-size:14px;"><span style=""><a href="http://www.mikemiwha.love" rel="noopener" style="text-decoration: underline; color: #6871e4;" target="_blank">mikemiwha.love</a></span></span></p>
-</div>
-</div>
-</td>
-</tr>
-</table>
-<table border="0" cellpadding="0" cellspacing="0" class="heading_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-<tr>
-<td class="pad" style="padding-left:10px;padding-top:25px;text-align:center;width:100%;">
-<h3 style="margin: 0; color: #000000; direction: ltr; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; font-size: 18px; font-weight: 400; letter-spacing: normal; line-height: 120%; text-align: left; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">Wedding Details</span></h3>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-<tbody>
-<tr>
-<td>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width="640">
-<tbody>
-<tr>
-<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="50%">
-<table border="0" cellpadding="0" cellspacing="0" class="text_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-<tr>
-<td class="pad" style="padding-top:15px;padding-right:10px;padding-bottom:15px;padding-left:10px;">
-<div style="font-family: sans-serif">
-<div class="" style="font-size: 12px; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 18px; color: #000000; line-height: 1.5;">
-<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;">Check In<br/></span></p>
-<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;">Friday July 21, 2023 - After 3:00 PM</p>
-</div>
-</div>
-</td>
-</tr>
-</table>
-</td>
-<td class="column column-2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="50%">
-<table border="0" cellpadding="0" cellspacing="0" class="text_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-<tr>
-<td class="pad" style="padding-top:15px;padding-right:10px;padding-bottom:15px;padding-left:10px;">
-<div style="font-family: sans-serif">
-<div class="" style="font-size: 12px; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 18px; color: #000000; line-height: 1.5;">
-<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;">Check Out</span></p>
-<p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;">Sunday July 23, 2023 - Before 10:00AM</p>
-</div>
-</div>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-<tbody>
-<tr>
-<td>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width="640">
-<tbody>
-<tr>
 <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 10px; padding-bottom: 0px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
-<table border="0" cellpadding="0" cellspacing="0" class="text_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+<table border="0" cellpadding="0" cellspacing="0" class="heading_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
 <tr>
-<td class="pad" style="padding-left:10px;padding-right:10px;padding-top:10px;">
-<div style="font-family: sans-serif">
-<div class="" style="font-size: 12px; mso-line-height-alt: 18px; color: #000000; line-height: 1.5; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
-<p style="margin: 0; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;"><span style=""><span style="font-size:16px;">Venue</span></span></span></p>
-</div>
-</div>
-</td>
-</tr>
-</table>
-<table border="0" cellpadding="0" cellspacing="0" class="text_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-<tr>
-<td class="pad" style="padding-bottom:20px;padding-left:10px;padding-right:10px;padding-top:5px;">
-<div style="font-family: sans-serif">
-<div class="" style="font-size: 12px; mso-line-height-alt: 14.399999999999999px; color: #000000; line-height: 1.2; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
-<p style="margin: 0; text-align: left; mso-line-height-alt: 14.399999999999999px;"><span style="font-size:14px;"><span style="">Deer Creek Mountain Camp <br/></span></span><span style="font-size:14px;"><span style="">228 S Pine Dr, Bailey, CO 80421</span></span></p>
-</div>
-</div>
-</td>
-</tr>
-</table>
-<table border="0" cellpadding="0" cellspacing="0" class="heading_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-<tr>
-<td class="pad" style="padding-bottom:15px;padding-left:10px;padding-top:50px;text-align:center;width:100%;">
-<h3 style="margin: 0; color: #000000; direction: ltr; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; font-size: 18px; font-weight: 700; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">Confirmation</span></h3>
+<td class="pad" style="padding-bottom:20px;padding-top:60px;text-align:center;width:100%;">
+<h3 style="margin: 0; color: #000000; direction: ltr; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; font-size: 18px; font-weight: 700; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">Confirmation Details</span></h3>
 </td>
 </tr>
 </table>
@@ -576,20 +611,13 @@
 <% end %>
 <table border="0" cellpadding="0" cellspacing="0" class="text_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
 <tr>
-<td class="pad" style="padding-bottom:10px;padding-left:10px;padding-right:10px;padding-top:20px;">
+<td class="pad" style="padding-bottom:95px;padding-left:10px;padding-right:10px;padding-top:20px;">
 <div style="font-family: sans-serif">
 <div class="" style="font-size: 12px; mso-line-height-alt: 18px; color: #000000; line-height: 1.5; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif;">
 <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;">Comments or Questions</span></p>
 <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;"><span style="font-size:14px;"><%= @guest.comments %></span></p>
 </div>
 </div>
-</td>
-</tr>
-</table>
-<table border="0" cellpadding="0" cellspacing="0" class="image_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-<tr>
-<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:85px;padding-bottom:85px;">
-<div align="center" class="alignment" style="line-height:10px"><%= image_tag attachments['xoxo.png'].url, :class => "big", :style => "display: block; padding-bottom: 50px; height: auto; border: 0; width: 70px; max-width: 100%;", :width => "70" %></div>
 </td>
 </tr>
 </table>
