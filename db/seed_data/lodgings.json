@@ -21,13 +21,13 @@
 	},
 	{
 		"name": "Lark",
-		"lodging_type": "family",
+		"lodging_type": "coed",
 		"capacity": 10,
 		"url": "https://www.airbnb.com/rooms/27491680?source_impression_id=p3_1632115505_xTGGkA65SWX6%2B80M&guests=1&adults=1",
 		"title": "Cozy bunk bed cabin, specifically for parents and their children",
 		"description": "This cozy cabin is one of 8 cabins located on our 125 acres at Deer Creek Mountain Camp. The cabin sleeps 10 in bunk beds as shown in the pictures. Guests will provide their own bedding and toiletries for a nearby shower house. Cabin includes a gas grill, fridge, and microwave",
 		"image_url": "https://a0.muscache.com/im/pictures/5320fb48-7766-44b1-b8e3-37d24f85e913.jpg?im_w=720",
-		"color": "#BD83C1"
+		"color": "#6871E4"
 	},
 	{
 		"name": "Moose",
@@ -141,13 +141,13 @@
 	},
 	{
 		"name": "Sasquach",
-		"lodging_type": "coed",
+		"lodging_type": "family",
 		"capacity": 10,
 		"url": "https://www.airbnb.com/rooms/37053401?source_impression_id=p3_1635266856_ouS5%2Bb4NXILGMAQM",
 		"title": "Cozy bunk bed cabin",
 		"description": "This cozy cabin is one of 8 cabins located on our 125 acres at Deer Creek Mountain Camp. The cabin sleeps 10 in bunk beds as shown in the pictures. Guests will provide their own bedding and toiletries for a nearby shower house. Cabin includes a gas grill, fridge, and microwave",
 		"image_url": "https://a0.muscache.com/im/pictures/e88da6d8-503e-40b7-b791-73d58fa30dc2.jpg?im_w=720",
-		"color": "#6871E4"
+		"color": "#BD83C1"
 	},
 	{
 		"name": "Aspen",
