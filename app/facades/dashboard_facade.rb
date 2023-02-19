@@ -59,6 +59,7 @@ class DashboardFacade
       "coconut" => 0,
       "dairy" => 0,
       "avocado" => 0,
+      "kiwi" => 0,
   }
     diet_list = Guest.where.not(diet: nil).order(updated_at: :desc ).map do |guest|
       keywords.each do |key, value|
