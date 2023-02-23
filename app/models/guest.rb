@@ -9,6 +9,7 @@ class Guest < ApplicationRecord
   before_update :remove_associations, if: :will_save_change_to_rsvp?
 
   enum rsvp:  {no: 0, yes: 1, pending: 2}, _prefix: :rsvp
+  enum has_kids:  {no: 0, yes: 1}, _prefix: :has_kids
   enum breakfast: {no: 0, yes: 1}, _prefix: :breakfast
   enum arrival_date:  {friday: 0, saturday: 1}
 
@@ -69,6 +70,7 @@ class Guest < ApplicationRecord
     self.plus_one_count ||= 0 
     self.party_count ||= 1
     self.bed_count ||= 1
+    self.has_kids ||= 'no'
   end
 
   def format_values

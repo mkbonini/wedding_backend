@@ -5,6 +5,7 @@ FactoryBot.define do
     email { Faker::Internet.email  }
     rsvp { Faker::Number.between(from: 0, to: 1)  }
     diet { Faker::Lorem.sentence }
+    has_kids { Faker::Number.between(from: 0, to: 1)  }
     payment_method { 1 }
     arrival_date { ["friday", "saturday"].sample }
     party_count { 1 }
