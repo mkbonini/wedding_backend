@@ -24,6 +24,9 @@ class GuestsController < ApplicationController
             return json_response("There is not enough space in the lodging selected", :bad_request)
           end
         end
+      end
+
+      if @guest.lodging_id != nil or guest_params.include?('lodging_id')
         @guest.kids.each do |kid|
           if kid.needs_bed == "yes"
             kid.update(lodging_id: guest_params['lodging_id'])
@@ -35,8 +38,6 @@ class GuestsController < ApplicationController
       end
       @guest.update(guest_params)
       head :no_content
-      # guest_response(@guest)
-      # GuestMailer.with(guest: @guest).welcome_email.deliver_later
     end
   
     def destroy
