@@ -26,15 +26,13 @@ class GuestsController < ApplicationController
         end
       end
       @guest.update(guest_params)
-      if @guest.lodging_id != nil
-        @guest.kids.each do |kid|
-          if kid.needs_bed == "yes"
-            kid.update(lodging_id: @guest.lodging_id)
-          end
+      @guest.kids.each do |kid|
+        if kid.needs_bed == "yes"
+          kid.update(lodging_id: @guest.lodging_id)
         end
-        @guest.plus_ones.each do |plus_one|
-          plus_one.update(lodging_id: @guest.lodging_id)
-        end
+      end
+      @guest.plus_ones.each do |plus_one|
+        plus_one.update(lodging_id: @guest.lodging_id)
       end
       head :no_content
     end
