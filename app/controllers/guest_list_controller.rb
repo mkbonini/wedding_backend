@@ -4,13 +4,13 @@ class GuestListController < ApplicationController
     guest_list = []
     Guest.all.each do |guest|
       h = {}
-      h[:name] = guest.full_name
+      h[:name] = Base64.encode64(guest.full_name.downcase)
       h[:guest_id] = guest.id
       guest_list << h 
     end
     PlusOne.all.each do |plus_one|
       h = {}
-      h[:name] = plus_one.name
+      h[:name] = Base64.encode64(plus_one.name.downcase)
       h[:guest_id] = plus_one.guest_id
       guest_list << h
     end
