@@ -28,7 +28,12 @@ class PlusOnesController < ApplicationController
   private
 
   def plus_one_params
-    params.permit(:name, :age, :guest_id, :team_id, :lodging_id)
+    model_attributes = [:name, :guest_id, :team_id, :lodging_id]
+    if params.key? '_json'
+      params.permit(_json: model_attributes)['_json'] 
+    else
+      params.permit(:name, :guest_id, :team_id, :lodging_id)
+    end
   end
 
   def set_plus_one
