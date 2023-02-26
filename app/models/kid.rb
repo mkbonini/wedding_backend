@@ -4,7 +4,7 @@ class Kid < ApplicationRecord
   belongs_to :lodging, optional: true
   after_create :increase_party_count, :set_lodging_id
   after_destroy :decrese_party_count
-  before_update :update_bed_count, if: :will_save_change_to_needs_bed?
+  before_update :update_bed_count, :set_lodging_id, if: :will_save_change_to_needs_bed?
 
   enum needs_bed: { "no": 0, "yes": 1 }
   enum child_care: { "sitter": 0, "guardian": 1 }
@@ -42,7 +42,7 @@ class Kid < ApplicationRecord
     guest = Guest.find(self.guest_id)
     lodging_id = guest.lodging_id
     lodging = Lodging.find(lodging_id) if lodging_id != nil
-    if needs_bed == "yes" and lodging_id != nil and lodging.spots_remaining > 0
+    if needs_bed == "yes" and lodging_id != nil and lodging_id != self.lodging_id and lodging.spots_remaining > 0
       self.update_attributes(:lodging_id => lodging_id)
     end
   end
