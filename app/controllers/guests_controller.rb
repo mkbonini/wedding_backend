@@ -22,14 +22,16 @@ class GuestsController < ApplicationController
         if guest_params['lodging_id'] != nil and (@lodging.guests.count + @lodging.kids.count + @lodging.plus_ones.count + @guest.bed_count > @lodging.capacity)
           return json_response("There is not enough space in the lodging selected", :bad_request)
         else
-          @guest.kids.each do |kid|
-            if kid.needs_bed == "yes"
-              kid.update(lodging_id: guest_params['lodging_id'])
-            end
-          end
-          @guest.plus_ones.each do |plus_one|
-            plus_one.update(lodging_id: guest_params['lodging_id'])
-          end
+          # @guest.kids.each do |kid|
+          #   if kid.needs_bed == "yes"
+          #     kid.update(lodging_id: guest_params['lodging_id'])
+          #   end
+          # end
+          # @guest.plus_ones.each do |plus_one|
+          #   plus_one.update(lodging_id: guest_params['lodging_id'])
+          # end
+          @guest.plus_ones.update(lodging_id: guest_params['lodging_id'])
+          @guest.kids.yes.update(lodging_id: guest_params['lodging_id'])
         end
       end
       @guest.update(guest_params)
