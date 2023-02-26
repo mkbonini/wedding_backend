@@ -8,7 +8,11 @@ module Response
     end
 
     def guest_response(object, status = :ok)
-      render json: object, include: {:kids => {only: [:id, :name, :age, :needs_bed, :child_care, :lodging_id, :team_id, :has_kids]} , :plus_ones => {only: [:id, :name, :lodging_id, :team_id]} }, methods: [:full_name ], status: status
+      render json: object, 
+      except: [:party_count, :bed_count, :created_at, :updated_at, :payment_method], 
+      include: {:kids => {only: [:id, :name, :age, :needs_bed, :child_care, :lodging_id, :team_id, :has_kids]} , :plus_ones => {only: [:id, :name, :lodging_id, :team_id]} }, 
+      methods: [:full_name, :party_count, :bed_count ], 
+      status: status
     end
 end
   

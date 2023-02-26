@@ -65,6 +65,14 @@ class Guest < ApplicationRecord
     end
   end
 
+  def party_count
+    1 + self.kids.count + self.plus_ones.count
+  end
+
+  def bed_count
+    party_count() - self.kids.no.count
+  end
+
   private
   def set_defaults
     self.plus_one_count ||= 0 

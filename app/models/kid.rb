@@ -2,9 +2,12 @@ class Kid < ApplicationRecord
   belongs_to :guest
   belongs_to :team, optional: true
   belongs_to :lodging, optional: true
-  after_create :increase_party_count, :set_lodging_id
-  after_destroy :decrese_party_count
-  before_update :update_bed_count, :set_lodging_id, if: :will_save_change_to_needs_bed?
+  # after_create :increase_party_count, :set_lodging_id
+  # after_destroy :decrese_party_count
+  # before_update :update_bed_count, :set_lodging_id, if: :will_save_change_to_needs_bed?
+
+  after_create  :set_lodging_id
+  before_update :set_lodging_id, if: :will_save_change_to_needs_bed?
 
   enum needs_bed: { "no": 0, "yes": 1 }
   enum child_care: { "sitter": 0, "guardian": 1 }
