@@ -18,19 +18,17 @@ class GuestsController < ApplicationController
   
     def update
       if guest_params.include?('lodging_id')
-        if guest_params['lodging_id'] != nil
-          @lodging = Lodging.find(guest_params['lodging_id']) 
-          if @lodging.guests.count + @lodging.kids.count + @lodging.plus_ones.count + @guest.bed_count > @lodging.capacity
-            return json_response("There is not enough space in the lodging selected", :bad_request)
-          else
-            @guest.kids.each do |kid|
-              if kid.needs_bed == "yes"
-                kid.update(lodging_id: @guest.lodging_id)
-              end
+        @lodging = Lodging.find(guest_params['lodging_id']) if guest_params['lodging_id'] != nil
+        if guest_params['lodging_id'] != nil and (@lodging.guests.count + @lodging.kids.count + @lodging.plus_ones.count + @guest.bed_count > @lodging.capacity)
+          return json_response("There is not enough space in the lodging selected", :bad_request)
+        else
+          @guest.kids.each do |kid|
+            if kid.needs_bed == "yes"
+              kid.update(lodging_id: guest_params['lodging_id'])
             end
-            @guest.plus_ones.each do |plus_one|
-              plus_one.update(lodging_id: @guest.lodging_id)
-            end
+          end
+          @guest.plus_ones.each do |plus_one|
+            plus_one.update(lodging_id: guest_params['lodging_id'])
           end
         end
       end
