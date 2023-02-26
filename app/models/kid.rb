@@ -48,5 +48,8 @@ class Kid < ApplicationRecord
     if needs_bed == "yes" and lodging_id != nil and lodging_id != self.lodging_id and lodging.spots_remaining > 0
       self.update_attributes(:lodging_id => lodging_id)
     end
+    if needs_bed == 'no'
+      self.update_attributes(:lodging_id => nil)
+    end
   end
 end
