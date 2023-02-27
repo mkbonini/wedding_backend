@@ -42,13 +42,15 @@ class Guest < ApplicationRecord
   def dodgeball
     dodge = []
     dodge << self.full_name if self.team_id != nil
-    self.kids.each do |kid|
-      dodge << kid.name if kid.team_id != nil
-    end
 
     self.plus_ones.each do |po|
       dodge << po.name if po.team_id != nil
     end
+
+    self.kids.each do |kid|
+      dodge << kid.name if kid.team_id != nil
+    end
+
     return dodge
   end
 
