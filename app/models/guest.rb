@@ -20,13 +20,14 @@ class Guest < ApplicationRecord
   def party
     party = self.full_name
 
+    self.plus_ones.each do |po|
+      party = party + ", " +  po.name
+    end
+
     self.kids.each do |kid|
       party = party + ", " + kid.name
     end
 
-    self.plus_ones.each do |po|
-      party = party + ", " +  po.name
-    end
     return party
   end
 
