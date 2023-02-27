@@ -9,6 +9,7 @@ class Guest < ApplicationRecord
   before_update :remove_associations, if: :will_save_change_to_rsvp?
 
   enum rsvp:  {no: 0, yes: 1, pending: 2}, _prefix: :rsvp
+  enum has_kids:  {no: 0, yes: 1}, _prefix: :has_kids
   enum breakfast: {no: 0, yes: 1}, _prefix: :breakfast
   enum arrival_date:  {friday: 0, saturday: 1}
 
@@ -19,13 +20,14 @@ class Guest < ApplicationRecord
   def party
     party = self.full_name
 
+    self.plus_ones.each do |po|
+      party = party + ", " +  po.name
+    end
+
     self.kids.each do |kid|
       party = party + ", " + kid.name
     end
 
-    self.plus_ones.each do |po|
-      party = party + ", " +  po.name
-    end
     return party
   end
 
@@ -40,13 +42,15 @@ class Guest < ApplicationRecord
   def dodgeball
     dodge = []
     dodge << self.full_name if self.team_id != nil
-    self.kids.each do |kid|
-      dodge << kid.name if kid.team_id != nil
-    end
 
     self.plus_ones.each do |po|
       dodge << po.name if po.team_id != nil
     end
+
+    self.kids.each do |kid|
+      dodge << kid.name if kid.team_id != nil
+    end
+
     return dodge
   end
 
@@ -64,11 +68,20 @@ class Guest < ApplicationRecord
     end
   end
 
+  def party_count
+    1 + self.kids.count + self.plus_ones.count
+  end
+
+  def bed_count
+    party_count() - self.kids.no.count
+  end
+
   private
   def set_defaults
     self.plus_one_count ||= 0 
     self.party_count ||= 1
     self.bed_count ||= 1
+    self.has_kids ||= 'no'
   end
 
   def format_values

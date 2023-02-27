@@ -2,8 +2,10 @@ class PlusOne < ApplicationRecord
   belongs_to :guest
   belongs_to :team, optional: true
   belongs_to :lodging, optional: true
-  after_create :increase_party_count, :set_lodging_id
-  after_destroy :decrese_party_count
+  # after_create :increase_party_count, :set_lodging_id
+  # after_destroy :decrese_party_count
+
+  after_create :set_lodging_id
 
   private
   def increase_party_count

@@ -24,34 +24,37 @@ class TeamsController < ApplicationController
       @team.destroy
       head :no_content
     end
-
+    
     def dodge
-        params["yes"].each do |name|
-          @guest = Guest.where("first_name || ' ' || last_name like :n", :n => "%#{name}")
-          @kid = Kid.find_by(name: name)
-          @plus_one = PlusOne.find_by(name: name)
-          if @guest.count > 0
-            @guest.first.update!(team_id: 1)
-          elsif @kid
-            @kid.update!(team_id: 1)
-          elsif @plus_one
+      params["yes"].each do |person|
+          case person[:type] 
+          when "guest"
+            @guest = Guest.find(person[:id])
+            @guest.update!(team_id: 1)
+          when "plus_one"
+            @plus_one = PlusOne.find(person[:id])
             @plus_one.update!(team_id: 1)
+          when "kid"
+            @kid = Kid.find(person[:id])
+            @kid.update!(team_id: 1)
           else
+            return json_response("Invalid type", :bad_request)
           end
         end
 
-        params["no"].each do |name|
-          @guest = Guest.where("first_name || ' ' || last_name like :n", :n => "%#{name}")
-          @kid = Kid.find_by(name: name)
-          @plus_one = PlusOne.find_by(name: name)
-          if @guest.count > 0
-            @guest.first.update!(team_id: nil)
-            # binding.pry
-          elsif @kid
-            @kid.update!(team_id: nil)
-          elsif @plus_one
+        params["no"].each do |person|
+          case person[:type] 
+          when "guest"
+            @guest = Guest.find(person[:id])
+            @guest.update!(team_id: nil)
+          when "plus_one"
+            @plus_one = PlusOne.find(person[:id])
             @plus_one.update!(team_id: nil)
+          when "kid"
+            @kid = Kid.find(person[:id])
+            @kid.update!(team_id: nil)
           else
+            return json_response("Invalid type", :bad_request)
           end
         end
     end
@@ -59,7 +62,12 @@ class TeamsController < ApplicationController
     private
   
     def team_params
-      params.permit(:name, :theme, :yes, :no)
+      model_attributes = [:name, :theme, :yes, :no, :type, :id]
+      if params.key? '_json' 
+        params.permit(_json: model_attributes)['_json'] 
+      else
+        params.permit(:name, :theme, :yes, :no, :type, :id)
+      end
     end
   
     def set_team
