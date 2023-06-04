@@ -2,7 +2,8 @@
 class DashboardFacade
   def initialize
     @guests = Guest.all.order(updated_at: :desc )
-    @attending = @guests.rsvp_yes.order(updated_at: :desc )
+    # @attending = @guests.rsvp_yes.order(updated_at: :desc )
+    @attending = attending()
     @not_attending = @guests.rsvp_no.order(updated_at: :desc )
     @comments = comments()
     @diets = diets()
@@ -15,10 +16,25 @@ class DashboardFacade
     @dodge_ball_statistics = dodge_ball_statistics()
   end
 
+  def party(guest)
+    party = guest.full_name
+
+    guest.plus_ones.each do |po|
+      party = party + ", " +  po.name
+    end
+
+    guest.kids.each do |kid|
+      party = party + ", " + kid.name
+    end
+
+    return party
+  end
+
   def attending 
     attending_list = @guests.rsvp_yes.order(updated_at: :desc ).map do |guest|
-      a = guest
-      a[:party] = guest.party
+      a = guest.as_json
+      a[:party] = party(guest)
+      a
     end
   end
   
@@ -91,16 +107,10 @@ class DashboardFacade
 
   def rsvp_statistics 
     rsvp_statistics = {}
-    rsvp_statistics[:yes] = @attending.count
-    rsvp_statistics[:no] = @not_attending.count
-    rsvp_statistics[:pending] = @guests.count - (rsvp_statistics[:yes] + rsvp_statistics[:no])
-    rsvp_statistics[:kids] = 0
-    rsvp_statistics[:plus_ones] = 0
-    @attending.each do |guest|
-      rsvp_statistics[:kids] = rsvp_statistics[:kids] + guest.kids.count
-      rsvp_statistics[:plus_ones] = rsvp_statistics[:plus_ones] + guest.plus_ones.count
-    end
-    rsvp_statistics[:total] = rsvp_statistics[:yes] + rsvp_statistics[:kids] + rsvp_statistics[:plus_ones]
+    rsvp_statistics[:yes] = @guests.rsvp_yes.sum(:party_count)
+    rsvp_statistics[:no] = @not_attending.sum(:party_count)
+    rsvp_statistics[:pending] = @guests.sum(:party_count) - (rsvp_statistics[:yes] + rsvp_statistics[:no])
+    rsvp_statistics[:total] = rsvp_statistics[:yes]
     rsvp_statistics
   end
 
