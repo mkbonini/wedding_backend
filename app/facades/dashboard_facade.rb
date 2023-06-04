@@ -1,8 +1,9 @@
+
 class DashboardFacade
   def initialize
     @guests = Guest.all.order(updated_at: :desc )
-    @attending = Guest.rsvp_yes.order(updated_at: :desc )
-    @not_attending = Guest.rsvp_no.order(updated_at: :desc )
+    @attending = @guests.rsvp_yes.order(updated_at: :desc )
+    @not_attending = @guests.rsvp_no.order(updated_at: :desc )
     @comments = comments()
     @diets = diets()
     @diet_keywords = diet_keywords()
@@ -14,8 +15,15 @@ class DashboardFacade
     @dodge_ball_statistics = dodge_ball_statistics()
   end
 
+  def attending 
+    attending_list = @guests.rsvp_yes.order(updated_at: :desc ).map do |guest|
+      a = guest
+      a[:party] = guest.party
+    end
+  end
+  
   def comments
-    comment_list = Guest.where.not(comments: nil).order(updated_at: :desc ).map do |guest|
+    comment_list = @guests.where.not(comments: nil).order(updated_at: :desc ).map do |guest|
       c = {}
       c[:guest_id] = guest.id
       c[:name] = guest.full_name
@@ -25,7 +33,7 @@ class DashboardFacade
   end
 
   def diets
-    diet_list = Guest.where.not(diet: nil).order(updated_at: :desc ).map do |guest|
+    diet_list = @guests.where.not(diet: nil).order(updated_at: :desc ).map do |guest|
       d = {}
       d[:guest_id] = guest.id
       d[:name] = guest.full_name
@@ -61,7 +69,7 @@ class DashboardFacade
       "avocado" => 0,
       "kiwi" => 0,
   }
-    diet_list = Guest.where.not(diet: nil).order(updated_at: :desc ).map do |guest|
+    diet_list = @guests.where.not(diet: nil).order(updated_at: :desc ).map do |guest|
       keywords.each do |key, value|
        if guest.diet.downcase.include?(key)
         keywords[key] += 1
@@ -98,9 +106,9 @@ class DashboardFacade
 
   def breakfast_statistics 
     breakfast_statistics = {}
-    breakfast_statistics[:yes] = Guest.breakfast_yes.count
-    breakfast_statistics[:no] = Guest.breakfast_no.count
-    breakfast_statistics[:pending] = Guest.all.count - (breakfast_statistics[:yes] + breakfast_statistics[:no])
+    breakfast_statistics[:yes] = @guests.breakfast_yes.sum(:party_count)
+    breakfast_statistics[:no] = @guests.breakfast_no.sum(:party_count)
+    breakfast_statistics[:pending] = @guests.all.sum(:party_count) - (breakfast_statistics[:yes] + breakfast_statistics[:no])
     breakfast_statistics
   end
 
@@ -108,24 +116,26 @@ class DashboardFacade
     lodging_statistics = {}
     offsite_id = Lodging.offsite.first.id
     ids_to_exclude = [nil, offsite_id]
-    lodging_statistics[:onsite] = Guest.where.not(lodging_id: ids_to_exclude).count 
-    lodging_statistics[:offsite] = Guest.where(lodging_id: offsite_id).count 
-    lodging_statistics[:pending] = Guest.where(lodging_id: nil).count 
+    lodging_statistics[:onsite] = @guests.where.not(lodging_id: ids_to_exclude).sum(:party_count)
+    lodging_statistics[:offsite] = @guests.where(lodging_id: offsite_id).sum(:party_count)
+    lodging_statistics[:pending] = @guests.where(lodging_id: nil).sum(:party_count) 
     lodging_statistics
   end
 
   def arrival_date_statistics
     arrival_date_statistics = {}
-    arrival_date_statistics[:friday] = Guest.friday.count 
-    arrival_date_statistics[:saturday] = Guest.saturday.count 
-    arrival_date_statistics[:pending] = Guest.where(arrival_date: nil).count 
+    arrival_date_statistics[:friday] = @guests.friday.sum(:party_count)
+    arrival_date_statistics[:saturday] = @guests.saturday.sum(:party_count)
+    arrival_date_statistics[:pending] = @guests.where(arrival_date: nil).sum(:party_count)
     arrival_date_statistics
   end
 
   def dodge_ball_statistics 
     dodge_ball_statistics = {}
-    dodge_ball_statistics[:yes] = Guest.where.not(team_id: nil).count 
-    dodge_ball_statistics[:no_and_pending] = Guest.where(team_id: nil).count 
+    dodge_ball_statistics[:yes] = @guests.where.not(team_id: nil).count 
+    dodge_ball_statistics[:yes] += Kid.where.not(team_id: nil).count
+    dodge_ball_statistics[:yes] += PlusOne.where.not(team_id: nil).count
+    dodge_ball_statistics[:no_and_pending] = @guests.where(team_id: nil).count 
     dodge_ball_statistics
   end
 end

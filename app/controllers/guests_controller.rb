@@ -70,6 +70,13 @@ class GuestsController < ApplicationController
       head :no_content
     end
 
+    def dodgeball
+      @players =  Guest.where.not(team_id: nil)
+      @players += Kid.where.not(team_id: nil)
+      @players += PlusOne.where.not(team_id: nil)
+      json_response(@players)
+    end
+
     private
   
     def guest_params

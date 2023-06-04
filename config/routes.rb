@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   patch '/guests/:id/kids', to: 'guests#kids'
   get '/dashboard', to: 'dashboard#index'
   patch '/dodgeball', to: 'teams#dodge'
+  get '/dodgeball', to: 'guests#dodgeball'
 end
