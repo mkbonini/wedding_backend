@@ -77,6 +77,13 @@ class GuestsController < ApplicationController
       json_response(@players)
     end
 
+    def correct_party_count
+      @guests = Guest.all
+      @guests.each do |guest|
+        party_count = 1 + guest.kids.count + guest.plus_ones.count
+        guest.update(party_count: party_count)
+      end
+    end
     private
   
     def guest_params

@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index'
   patch '/dodgeball', to: 'teams#dodge'
   get '/dodgeball', to: 'guests#dodgeball'
+  post '/correct_pc', to: 'guests#correct_party_count'
 end
