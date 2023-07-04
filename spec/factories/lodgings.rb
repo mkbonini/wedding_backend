@@ -5,5 +5,6 @@ FactoryBot.define do
     capacity { 6 }
     url { Faker::Internet.domain_name }
     description { Faker::Lorem.sentence }
+    pdf_url {Faker::Internet.domain_name }
   end
 end

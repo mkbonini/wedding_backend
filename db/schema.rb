@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_27_180139) do
+ActiveRecord::Schema.define(version: 2023_07_04_184110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2023_02_27_180139) do
     t.string "image_url"
     t.string "color"
     t.string "map_url"
+    t.string "pdf_url"
   end
 
   create_table "plus_ones", force: :cascade do |t|
