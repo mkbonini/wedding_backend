@@ -53,9 +53,10 @@ class GuestsController < ApplicationController
     end
 
     def email_reminder
-      # @guests = Guest.rsvp_yes
-      @guest = Guest.find(57)
-      GuestMailer.with(guest: @guest).reminder_email.deliver_later
+      @guests = Guest.rsvp_yes
+      @guests.each do |guest|
+        GuestMailer.with(guest: guest).reminder_email.deliver_later
+      end
     end
 
     def kids

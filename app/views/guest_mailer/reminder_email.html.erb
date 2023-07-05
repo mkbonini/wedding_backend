@@ -529,16 +529,18 @@
 																				list-style-type: disc;
 																			"
 																		>
-																			<li
+
+																			<% if @guest.team_id != nil %>
+																				<li
 																				style="
 																					margin-bottom: 0;
 																					text-align: left;
 																				"
-																			>
-																			<% if @guest.team_id != nil %>
-																				<%= @guest.full_name %> - <%= @guest.team.name %>
+																				>
+																					<%= @guest.full_name %> - <%= @guest.team.name %>
+																				</li>
 																			<% end %>
-																			</li>
+
 																			<% if @guest.plus_ones.count > 0 %>
 																				<% if @guest.plus_ones.first.team_id != nil %>
 																					<li
@@ -933,8 +935,8 @@
 																			<strong
 																				>Sleeping Items and Toiletries<br /><br /><span
 																					style="color: #fc0000"
-																					>Remember, the cabins do not come with
-																					sleeping bags, pillows or sheets. You
+																					>Remember, the A-frame cabins do not come with
+																					sleeping bags, pillows or sheets. If you are staying in one of these cabins you will 
 																					need to bring these items with you.
 																				</span></strong
 																			>They also do not come with towels and

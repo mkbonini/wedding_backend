@@ -32,6 +32,6 @@ class GuestMailer < ApplicationMailer
     def reminder_email
       @guest = params[:guest]
 
-      mail(to: @guest.email, subject: "Reminder, the M+M wedding is coming up! (July 21-23, 2023)")
+      mail(to: @guest.email, subject: "Important Info Regarding M+M's Wedding! (July 21-23, 2023)")
     end
 end
