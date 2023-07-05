@@ -891,16 +891,7 @@
 																				>About Your Cabin<br /><br /></strong
 																			>Please read this document provided by the
 																			owners of the venue regarding your cabin. You can find the pdf
-																			<a
-																				href="<%= @guest.lodging.pdf_url %>"
-																				target="_blank"
-																				style="
-																					text-decoration: underline;
-																					color: #8a3c90;
-																				"
-																				rel="noopener"
-																				>here.</a
-																			>
+																			<%= link_to "here.", @guest.lodging.pdf_url %>
 																			 Please read it before you arrive. In it you
 																			will find important information as well as
 																			a map that shows where your cabin is on
