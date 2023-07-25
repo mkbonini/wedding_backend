@@ -59,6 +59,13 @@ class GuestsController < ApplicationController
       end
     end
 
+    def email_photo
+      @guests = Guest.rsvp_yes
+      @guests.each do |guest|
+        GuestMailer.with(guest: guest).photo_email.deliver_later
+      end
+    end
+
     def kids
       ids = []
       kid_list_params.each do |kid_data|

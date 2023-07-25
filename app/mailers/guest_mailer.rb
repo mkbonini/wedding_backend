@@ -34,4 +34,10 @@ class GuestMailer < ApplicationMailer
 
       mail(to: @guest.email, subject: "Important Info Regarding M+M's Wedding! (July 21-23, 2023)")
     end
+
+    def photo_email
+      @guest = params[:guest]
+
+      mail(to: @guest.email, subject: "Loved seeing you, let's share photos!!")
+    end
 end

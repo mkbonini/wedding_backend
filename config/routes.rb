@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/guest_list', to: 'guest_list#index'
   get '/guests/:id/email', to: 'guests#email'
   # get '/reminder_email', to: 'guests#email_reminder'
+  get '/photo_email', to: 'guests#email_photo'
   patch '/guests/:id/kids', to: 'guests#kids'
   get '/dashboard', to: 'dashboard#index'
   patch '/dodgeball', to: 'teams#dodge'
